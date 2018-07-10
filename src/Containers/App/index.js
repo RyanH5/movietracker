@@ -1,7 +1,23 @@
 import React, { Component } from 'react';
 import './styles.css';
+import { fetchSomeMovies } from '../../apiCalls';
+import { movieCleaner } from '../../cleaners'
 
 class App extends Component {
+  constructor(){
+    super()
+    this.state = {
+
+    }
+  }
+
+  async componentDidMount (){
+    const uncleanedMovies = await fetchSomeMovies()
+    const movies = movieCleaner(uncleanedMovies)
+    console.log(movies);
+    
+  }
+
   render() {
     return (
       <div className="App">

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './styles.css';
 import { fetchSomeMovies } from '../../apiCalls';
-import { movieCleaner } from '../../cleaners'
+import { movieCleaner } from '../../cleaners';
 
 class App extends Component {
   constructor(){
@@ -13,8 +13,8 @@ class App extends Component {
 
   async componentDidMount (){
     const uncleanedMovies = await fetchSomeMovies()
+    console.log(uncleanedMovies)
     const movies = movieCleaner(uncleanedMovies)
-    console.log(movies);
     
   }
 

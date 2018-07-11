@@ -1,7 +1,6 @@
 export const movieCleaner = (moviesData) => {
 
   return moviesData.results.map((movie) => {
-    console.log(movie)
     const average = movie.vote_average;
     const id = movie.id;
     const popularity = movie.popularity;

@@ -5,18 +5,18 @@ import { movieCleaner } from '../../cleaners';
 import CardContainer from '../CardContainer';
 import { addMovies } from '../../Actions';
 import { connect } from 'react-redux';
-import { Route, NavLink, Link } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import Header from '../../Components/Header';
 
 class App extends Component {
-  constructor(){
+  constructor() {
     super()
     this.state = {
 
     }
   }
 
-  async componentDidMount (){
+  async componentDidMount() {
     const uncleanedMovies = await fetchSomeMovies();
     const movies = movieCleaner(uncleanedMovies);
     this.props.addMovies(movies);
@@ -26,15 +26,14 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
-        
-       <CardContainer />
+        <Route exact path="/" component={CardContainer} />
       </div>
-    );
-  }
-}
-
+        );
+      }
+    }
+    
 export const mapDispatchToProps = (dispatch) => ({
-  addMovies: (movies) => dispatch(addMovies(movies))
-})
-
+          addMovies: (movies) => dispatch(addMovies(movies))
+      })
+      
 export default connect (null, mapDispatchToProps)(App);

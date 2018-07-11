@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import MovieCard from '../../Components/MovieCard';
+import './styles.css';
 
 export class CardContainer extends Component {
   constructor(props) {
@@ -17,7 +18,7 @@ export class CardContainer extends Component {
 
   render () {
     return (
-      <div>{this.cardsDisplay()}</div>
+      <div className="card-container">{this.cardsDisplay()}</div>
     );
   }
 }

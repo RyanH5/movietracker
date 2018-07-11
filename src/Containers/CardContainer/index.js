@@ -8,9 +8,9 @@ export class CardContainer extends Component {
   }
 
   cardsDisplay = () => {
-    console.log(this.props.movies)
     const cards = this.props.movies.map(movie => {
-      return <MovieCard  average={movie.average} />
+      console.log(movie)
+      return <MovieCard  {...movie} />
     });
     return cards;
   }

@@ -1,20 +1,21 @@
 export const movieCleaner = (moviesData) => {
-
-  return moviesData.results.map((movie) => {
-    const average = movie.vote_average;
+  return moviesData.results.map(movie => {
+    const title = movie.title;
     const id = movie.id;
-    const popularity = movie.popularity;
-    const posterPath = movie.poster_path;
-    const backDropPath = movie.backdrop_path;
+    const voteAverage = movie.vote_average;
+    const poster = movie.poster_path;
     const overview = movie.overview;
+    const popularity = movie.popularity;
+    const backdrop = movie.backdrop_path;
 
     return ({
-      average,
+      title,
       id,
+      voteAverage,
+      poster,
+      overview,
       popularity,
-      posterPath,
-      backDropPath,
-      overview
+      backdrop
     })
   })
 }

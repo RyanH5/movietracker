@@ -5,6 +5,8 @@ import { movieCleaner } from '../../cleaners';
 import CardContainer from '../CardContainer';
 import { addMovies } from '../../Actions';
 import { connect } from 'react-redux';
+import { Route, NavLink, Link } from 'react-router-dom';
+import Header from '../../Components/Header';
 
 class App extends Component {
   constructor(){
@@ -23,10 +25,8 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <h1 className="App-title">Movie Tracker</h1>
-          <button>Login / Sign-up</button>
-        </header>
+        <Header />
+        
        <CardContainer />
       </div>
     );

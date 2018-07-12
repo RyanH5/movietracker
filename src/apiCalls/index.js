@@ -8,9 +8,36 @@ export const fetchSomeMovies = async ()=>{
   return moviesData; 
 };
 
-export const fetchUsersFromDatabase = async () => {
-  const url = 'http://localhost:3000/api/users';
-  const response = await fetch(url);
-  const userData = await response.json();
-  return userData.data;
+// export const postNewUserToDatabase = async (user) => {
+//   const url = 'http://localhost:3000/api/users/new';
+//   const options = {
+//     method: 'POST'
+//     body: JSON.stringify(user)
+//     headers:
+//   }
+//   const response = await fetch(url, options);
+//   const userData = await response.json();
+//   return userData.data;
+// };
+
+export const loginUser = async (user) => {
+  try{
+    const url = 'http://localhost:3000/api/users/';
+    const options = {
+      method: 'POST',
+      body: JSON.stringify({email: user.email, password: user.password}),
+        headers: {'Content-Type': 'application/json'}
+    }
+    const response = await fetch(url, options);
+    if(response.status===200){
+
+      const userData = await response.json();
+      
+      console.log(userData);
+      return userData;
+    }
+    
+  } catch (error) {
+    throw Error(`${error.message}`)
+  }
 };

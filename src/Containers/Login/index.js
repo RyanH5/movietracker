@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
-import {fetchUsersFromDatabase} from '../../apiCalls';
+import {loginUser} from '../../apiCalls';
+import { toggleUserLogin } from '../../Actions';
+import {connect} from 'react-redux';
 
-class Login extends Component {
-  constructor() {
-    super();
+export class Login extends Component {
+  constructor(props) {
+    super(props);
     this.state = {
       email: '',
       password: ''
@@ -15,21 +17,17 @@ class Login extends Component {
     this.setState({ [name]: value });
   }
 
-  
-
-   verifyUser = (usersArray)=>{
-     console.log(usersArray)
-    const foundOne = usersArray.find(user => {
-      return user.email === this.state.email && user.password === this.state.password;
-    });
-    console.log(foundOne);
-        
-  }
-
   handleSubmit = async (event)=>{
     event.preventDefault();
-    const allUsers = await fetchUsersFromDatabase();
-    this.verifyUser(allUsers);
+    const user = await loginUser(this.state); 
+    if (user.status === 'success'){
+      await this.props.handleLogin(user.data); //fetch call
+    } else {
+      console.log('not a user'); 
+    }
+    //this.props.handleLogin(allUsers.data)
+    //dispatch to props allUsers.data
+    //same action for login and create new user
   }
 
   render() {
@@ -57,4 +55,8 @@ class Login extends Component {
   }
 }
 
-export default Login;
+export const mapDispatchToProps = (dispatch)=>({
+  handleLogin: (userData)=>dispatch(toggleUserLogin(userData))
+});
+
+export default connect(null, mapDispatchToProps)(Login);

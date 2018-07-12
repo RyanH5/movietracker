@@ -9,7 +9,9 @@ const MovieCard = ({title, id, voteAverage, poster, overview, popularity, backdr
       <h3>{voteAverage}</h3>
       <h4>{popularity}</h4>
       <h5>{overview}</h5>
-      <img src={poster} />
+      <img 
+        src={poster}
+        alt="" />
     </div>
   );
 }

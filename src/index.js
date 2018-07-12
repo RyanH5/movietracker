@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from '../src/Containers/App';
 import { createStore } from 'redux';
-import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import rootReducer from './Reducers';
 import { BrowserRouter } from 'react-router-dom';

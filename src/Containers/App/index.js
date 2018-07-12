@@ -2,17 +2,16 @@ import React, { Component } from 'react';
 import './styles.css';
 import { fetchSomeMovies } from '../../apiCalls';
 import { movieCleaner } from '../../cleaners';
-import CardContainer from '../CardContainer';
 import { addMovies } from '../../Actions';
 import { connect } from 'react-redux';
-import { Route } from 'react-router-dom';
 import Header from '../../Components/Header';
+import Main from '../../Components/Main'
+import { withRouter } from 'react-router-dom';
 
 class App extends Component {
   constructor() {
     super()
     this.state = {
-
     }
   }
 
@@ -26,7 +25,7 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
-        <Route exact path="/" component={CardContainer} />
+        <Main />    
       </div>
         );
       }
@@ -36,4 +35,4 @@ export const mapDispatchToProps = (dispatch) => ({
           addMovies: (movies) => dispatch(addMovies(movies))
       })
       
-export default connect (null, mapDispatchToProps)(App);
+export default withRouter(connect (null, mapDispatchToProps)(App));

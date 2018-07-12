@@ -1,37 +1,35 @@
 import React, { Component } from 'react';
+import {fetchUsersFromDatabase} from '../../apiCalls';
 
 class Login extends Component {
   constructor() {
-    super()
+    super();
     this.state = {
       email: '',
       password: ''
-    }
+    };
   }
 
   handleChange = (event) => {
-    const { name, value } = event.target
-    this.setState({ [name]: value })
+    const { name, value } = event.target;
+    this.setState({ [name]: value });
   }
 
-  fetchUsersFromDatabase = async () => {
-    const url = 'http://localhost:3000/api/users'
-    const response = await fetch(url);
-    const userData = await response.json();
+  
 
-    return userData.data
-  }
-
-  verifyUser = (usersArray)=>{
+   verifyUser = (usersArray)=>{
+     console.log(usersArray)
     const foundOne = usersArray.find(user => {
       return user.email === this.state.email && user.password === this.state.password;
-    })    
+    });
+    console.log(foundOne);
+        
   }
 
   handleSubmit = async (event)=>{
     event.preventDefault();
-    const allUsers = await this.fetchUsersFromDatabase()
-    this.verifyUser(allUsers)
+    const allUsers = await fetchUsersFromDatabase();
+    this.verifyUser(allUsers);
   }
 
   render() {
@@ -55,7 +53,7 @@ class Login extends Component {
         />
         <button>Submit</button>
       </form>
-    )
+    );
   }
 }
 

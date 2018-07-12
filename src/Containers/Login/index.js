@@ -15,7 +15,6 @@ class Login extends Component {
   }
 
   fetchUsersFromDatabase = async () => {
-    
     const url = 'http://localhost:3000/api/users'
     const response = await fetch(url);
     const userData = await response.json();
@@ -24,8 +23,6 @@ class Login extends Component {
   }
 
   verifyUser = (usersArray)=>{
-    console.log('happy');
-    
     const foundOne = usersArray.find(user => {
       return user.email === this.state.email && user.password === this.state.password
     })

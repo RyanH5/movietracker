@@ -24,10 +24,8 @@ class Login extends Component {
 
   verifyUser = (usersArray)=>{
     const foundOne = usersArray.find(user => {
-      return user.email === this.state.email && user.password === this.state.password
-    })
-    console.log(foundOne);
-    
+      return user.email === this.state.email && user.password === this.state.password;
+    })    
   }
 
   handleSubmit = async (event)=>{

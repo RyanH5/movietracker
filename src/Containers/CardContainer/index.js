@@ -10,7 +10,6 @@ export class CardContainer extends Component {
 
   cardsDisplay = () => {
     const cards = this.props.movies.map(movie => {
-      console.log(movie)
       return <MovieCard  {...movie} />
     });
     return cards;
@@ -28,6 +27,5 @@ export const mapStateToProps = (state) => ({
 })
 
 export default connect(mapStateToProps)(CardContainer);
-
 
 

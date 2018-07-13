@@ -9,14 +9,12 @@ const Main = ({state}) => {
 
   return (
     <Switch>
-
       <Route
         exact path="/"
         component={CardContainer}
       />
       <Route
         exact path="/login"
-        component={Login}
         render={() => (
           state.user.loginStatus ? (
             <Redirect to="/" />
@@ -25,6 +23,10 @@ const Main = ({state}) => {
           )
         )}
       />
+      {/* <Route
+        path='/'
+        component={PageNotFound}
+      /> */}
     </Switch>
   );
 };

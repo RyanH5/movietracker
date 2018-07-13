@@ -35,6 +35,6 @@ export const loginUser = async (user) => {
       return userData;
     } 
   } catch (error) {
-    throw Error(`${error.message}`)
+    throw Error(`I am an error ${error.message}`)
   }
 };

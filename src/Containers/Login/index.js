@@ -23,20 +23,28 @@ export class Login extends Component {
     if (user.status === 'success'){
       await this.props.handleLogin(user.data); //fetch call
     } else {
-      console.log('not a user'); 
+      console.log('unhappy');
+      
+      this.handleError();  
     }
     //this.props.handleLogin(allUsers.data)
     //dispatch to props allUsers.data
     //same action for login and create new user
   }
 
+  handleError = ()=>{
+    return (
+      <h1>Your email or password does not match.</h1>
+    );    
+  }
+
   render() {
+    console.log(this.props);
+    
     return (
       <form
         onSubmit={this.handleSubmit}
       >
-      {!loginStatus &&
-          <h1>Your email or password does not match.</h1> }
       
         <input
           onChange={this.handleChange}
@@ -59,6 +67,10 @@ export class Login extends Component {
   }
 }
 
+
+export const mapStateToProps = (state) => ({
+  loginStatus: state.loginStatus
+});
 
 export const mapDispatchToProps = (dispatch)=>({
   handleLogin: (userData)=>dispatch(toggleUserLogin(userData))

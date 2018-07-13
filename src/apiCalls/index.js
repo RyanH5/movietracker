@@ -27,7 +27,7 @@ export const loginUser = async (user) => {
       method: 'POST',
       body: JSON.stringify({email: user.email, password: user.password}),
         headers: {'Content-Type': 'application/json'}
-    }
+    };
     const response = await fetch(url, options);
     if(response.status===200){
 
@@ -43,6 +43,6 @@ export const loginUser = async (user) => {
 
   } catch (error) {
     
-    throw Error(`I am an error ${error.message}`)
+    throw Error(alert('Name and Password do not match.'));
   }
 };

@@ -23,8 +23,7 @@ export class Login extends Component {
     if (user.status === 'success'){
       await this.props.handleLogin(user.data); //fetch call
     } else {
-      console.log('unhappy');
-      
+      console.log('unhappy');  
       this.handleError();  
     }
     //this.props.handleLogin(allUsers.data)
@@ -39,8 +38,6 @@ export class Login extends Component {
   }
 
   render() {
-    console.log(this.props);
-    
     return (
       <form
         onSubmit={this.handleSubmit}
@@ -68,12 +65,12 @@ export class Login extends Component {
 }
 
 
-export const mapStateToProps = ({state}) => ({
-  state: state
+export const mapStateToProps = (state) => ({
+  loginStatus: state.user.loginStatus
 });
 
 export const mapDispatchToProps = (dispatch)=>({
   handleLogin: (userData)=>dispatch(toggleUserLogin(userData))
 });
 
-export default connect(null, mapDispatchToProps)(Login);
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

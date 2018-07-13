@@ -32,11 +32,8 @@ export const loginUser = async (user) => {
     if(response.status===200){
 
       const userData = await response.json();
-      
-      console.log(userData);
       return userData;
-    }
-    
+    } 
   } catch (error) {
     throw Error(`${error.message}`)
   }

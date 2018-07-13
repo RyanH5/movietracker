@@ -1,25 +1,37 @@
 import React from 'react';
-import { Route, withRouter } from 'react-router-dom';
+import { Route, withRouter, Redirect, Switch } from 'react-router-dom';
 import Login from '../../Containers/Login';
 import CardContainer from '../../Containers/CardContainer';
+import {connect} from 'react-redux';
 
-const Main = (props) => {
+const Main = ({state}) => {
+
   return (
-    <div>
+    <Switch>
+
       <Route
         exact path="/"
-        component={CardContainer} 
+        component={CardContainer}
       />
       <Route
         exact path="/login"
-        component={Login} 
+        component={Login}
+        render={() => (
+          state.user.loginStatus ? (
+            <Redirect to="/" />
+          ) : (
+            <Login />
+          )
+        )}
       />
-    </div>
+    </Switch>
   );
 };
 
-export default withRouter(Main);
+export const mapStateToProps = (state) => ({
+  state: state
+});
 
-// export const mapStateToProps = (state)=>({
-//   loginStatus: state.loginStatus
-// })
+export default withRouter(connect(mapStateToProps)(Main));
+
+

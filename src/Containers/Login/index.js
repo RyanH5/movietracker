@@ -23,11 +23,18 @@ export class Login extends Component {
     if (user.status === 'success'){
       await this.props.handleLogin(user.data); //fetch call
     } else {
-      console.log('not a user'); 
+      console.log('unhappy');  
+      this.handleError();  
     }
     //this.props.handleLogin(allUsers.data)
     //dispatch to props allUsers.data
     //same action for login and create new user
+  }
+
+  handleError = ()=>{
+    return (
+      <h1>Your email or password does not match.</h1>
+    );    
   }
 
   render() {
@@ -35,6 +42,7 @@ export class Login extends Component {
       <form
         onSubmit={this.handleSubmit}
       >
+      
         <input
           onChange={this.handleChange}
           type="text"
@@ -48,6 +56,7 @@ export class Login extends Component {
           placeholder="password"
           value={this.state.password}
           name="password"
+
         />
         <button>Submit</button>
       </form>
@@ -55,8 +64,13 @@ export class Login extends Component {
   }
 }
 
+
+export const mapStateToProps = (state) => ({
+  loginStatus: state.user.loginStatus
+});
+
 export const mapDispatchToProps = (dispatch)=>({
   handleLogin: (userData)=>dispatch(toggleUserLogin(userData))
 });
 
-export default connect(null, mapDispatchToProps)(Login);
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

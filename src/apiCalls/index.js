@@ -27,14 +27,22 @@ export const loginUser = async (user) => {
       method: 'POST',
       body: JSON.stringify({email: user.email, password: user.password}),
         headers: {'Content-Type': 'application/json'}
-    }
+    };
     const response = await fetch(url, options);
     if(response.status===200){
 
       const userData = await response.json();
       return userData;
-    } 
+    } else if (response.status > 400){
+      const failedUserData = await response.json();
+
+      console.log('over 400', failedUserData);
+    }
+    
+    
+
   } catch (error) {
-    throw Error(`${error.message}`)
+    
+    throw Error(alert('Name and Password do not match.'));
   }
 };

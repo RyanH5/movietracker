@@ -5,8 +5,6 @@ const userReducer = (state={loginStatus:false}, action) => {
       return { ...state, 
         id: action.userData.id, 
         name: action.userData.name,
-        password: action.userData.password,
-        email: action.userData.email,
         loginStatus: !state.loginStatus  };
     default:
       return state;

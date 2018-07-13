@@ -5,14 +5,14 @@ import { movieCleaner } from '../../cleaners';
 import { addMovies } from '../../Actions';
 import { connect } from 'react-redux';
 import Header from '../../Components/Header';
-import Main from '../../Components/Main'
+import Main from '../../Components/Main';
 import { withRouter } from 'react-router-dom';
 
 class App extends Component {
   constructor() {
-    super()
+    super();
     this.state = {
-    }
+    };
   }
 
   async componentDidMount() {
@@ -25,14 +25,14 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
-        <Main />    
+        <Main />
       </div>
-        );
-      }
-    }
-    
+    );
+  }
+}
+
 export const mapDispatchToProps = (dispatch) => ({
-          addMovies: (movies) => dispatch(addMovies(movies))
-      })
-      
-export default withRouter(connect (null, mapDispatchToProps)(App));
+  addMovies: (movies) => dispatch(addMovies(movies))
+});
+
+export default withRouter(connect(null, mapDispatchToProps)(App));

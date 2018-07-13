@@ -1,37 +1,33 @@
 import React, { Component } from 'react';
+import {loginUser} from '../../apiCalls';
+import { toggleUserLogin } from '../../Actions';
+import {connect} from 'react-redux';
 
-class Login extends Component {
-  constructor() {
-    super()
+export class Login extends Component {
+  constructor(props) {
+    super(props);
     this.state = {
       email: '',
       password: ''
-    }
+    };
   }
 
   handleChange = (event) => {
-    const { name, value } = event.target
-    this.setState({ [name]: value })
-  }
-
-  fetchUsersFromDatabase = async () => {
-    const url = 'http://localhost:3000/api/users'
-    const response = await fetch(url);
-    const userData = await response.json();
-
-    return userData.data
-  }
-
-  verifyUser = (usersArray)=>{
-    const foundOne = usersArray.find(user => {
-      return user.email === this.state.email && user.password === this.state.password;
-    })    
+    const { name, value } = event.target;
+    this.setState({ [name]: value });
   }
 
   handleSubmit = async (event)=>{
     event.preventDefault();
-    const allUsers = await this.fetchUsersFromDatabase()
-    this.verifyUser(allUsers)
+    const user = await loginUser(this.state); 
+    if (user.status === 'success'){
+      await this.props.handleLogin(user.data); //fetch call
+    } else {
+      console.log('not a user'); 
+    }
+    //this.props.handleLogin(allUsers.data)
+    //dispatch to props allUsers.data
+    //same action for login and create new user
   }
 
   render() {
@@ -55,8 +51,12 @@ class Login extends Component {
         />
         <button>Submit</button>
       </form>
-    )
+    );
   }
 }
 
-export default Login;
+export const mapDispatchToProps = (dispatch)=>({
+  handleLogin: (userData)=>dispatch(toggleUserLogin(userData))
+});
+
+export default connect(null, mapDispatchToProps)(Login);

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import MovieCard from '../../Components/MovieCard';
 import './styles.css';
+import PropTypes from 'prop-types';
 
 export class CardContainer extends Component {
   constructor(props) {
@@ -21,6 +22,10 @@ export class CardContainer extends Component {
     );
   }
 }
+
+CardContainer.propTypes = {
+  movies: PropTypes.array.isRequired
+};
 
 export const mapStateToProps = (state) => ({
   movies: state.moviesData

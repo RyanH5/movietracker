@@ -35,6 +35,9 @@ export class Login extends Component {
       <form
         onSubmit={this.handleSubmit}
       >
+      {!loginStatus &&
+          <h1>Your email or password does not match.</h1> }
+      
         <input
           onChange={this.handleChange}
           type="text"
@@ -48,13 +51,14 @@ export class Login extends Component {
           placeholder="password"
           value={this.state.password}
           name="password"
-          
+
         />
         <button>Submit</button>
       </form>
     );
   }
 }
+
 
 export const mapDispatchToProps = (dispatch)=>({
   handleLogin: (userData)=>dispatch(toggleUserLogin(userData))

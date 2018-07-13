@@ -48,6 +48,7 @@ export class Login extends Component {
           placeholder="password"
           value={this.state.password}
           name="password"
+          
         />
         <button>Submit</button>
       </form>

@@ -21,7 +21,7 @@ export const fetchSomeMovies = async ()=>{
 // };
 
 export const loginUser = async (user) => {
-  try{
+  try {
     const url = 'http://localhost:3000/api/users/';
     const options = {
       method: 'POST',

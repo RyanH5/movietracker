@@ -3,16 +3,22 @@ import { shallow, mount } from 'enzyme';
 import React from 'react';
 
 describe('Login', () => {
+  it('should match snapshot', () => {
+    let wrapper = shallow(<Login />);
+
+    expect(wrapper).toMatchSnapshot();
+  });
   
   
   describe('handleChange', () => {
-    let wrapper;
     let spy;
+    let wrapper;
 
     beforeEach(() => {
       wrapper = mount(<Login />);
       spy = jest.spyOn(wrapper.instance(), 'handleChange');
     });
+
     it('should update state of email', () => {
       const mockEvent = {
         target: {

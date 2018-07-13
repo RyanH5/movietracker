@@ -3,6 +3,7 @@ import './styles.css';
 import PropTypes from 'prop-types';
 
 const MovieCard = ({title, id, voteAverage, poster, overview, popularity, backdrop}) => {
+  console.log(poster)
   return (
     <div className="movie-card">
       <button>FAVORITE</button>
@@ -11,7 +12,8 @@ const MovieCard = ({title, id, voteAverage, poster, overview, popularity, backdr
       <h4>{popularity}</h4>
       <h5>{overview}</h5>
       <img 
-        src={poster}
+        
+        src={`https://image.tmdb.org/t/p/w200${poster}`}
         alt="" />
     </div>
   );

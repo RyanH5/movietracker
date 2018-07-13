@@ -68,8 +68,8 @@ export class Login extends Component {
 }
 
 
-export const mapStateToProps = (state) => ({
-  loginStatus: state.loginStatus
+export const mapStateToProps = ({state}) => ({
+  state: state
 });
 
 export const mapDispatchToProps = (dispatch)=>({

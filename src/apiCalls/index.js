@@ -33,8 +33,16 @@ export const loginUser = async (user) => {
 
       const userData = await response.json();
       return userData;
-    } 
+    } else if (response.status > 400){
+      const failedUserData = await response.json();
+
+      console.log('over 400', failedUserData);
+    }
+    
+    
+
   } catch (error) {
+    
     throw Error(`I am an error ${error.message}`)
   }
 };

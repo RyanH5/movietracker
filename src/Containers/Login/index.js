@@ -47,7 +47,10 @@ export class Login extends Component {
       <form
         onSubmit={this.handleSubmit}
       >
-      
+      {
+        this.state.hasErrored && 
+        <h2>Your email or password does not match an existing user.</h2>
+      }
         <input
           onChange={this.handleChange}
           type="text"

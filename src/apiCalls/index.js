@@ -8,17 +8,17 @@ export const fetchSomeMovies = async ()=>{
   return moviesData; 
 };
 
-// export const postNewUserToDatabase = async (user) => {
-//   const url = 'http://localhost:3000/api/users/new';
-//   const options = {
-//     method: 'POST'
-//     body: JSON.stringify({ name ,email, password })
-//     headers:
-//   }
-//   const response = await fetch(url, options);
-//   const userData = await response.json();
-//   return userData.data;
-// };
+export const postNewUserToDatabase = async ({ name, email, password }) => {
+  const url = 'http://localhost:3000/api/users/new';
+  const options = {
+    method: 'POST',
+    body: JSON.stringify({ name ,email, password }),
+     headers: { 'Content-Type': 'application/json' }
+  }
+  const response = await fetch(url, options);
+  const userData = await response.json();
+  return userData.data;
+};
 
 export const loginUser = async ({email, password}) => {
   try {

@@ -12,7 +12,7 @@ export const fetchSomeMovies = async ()=>{
 //   const url = 'http://localhost:3000/api/users/new';
 //   const options = {
 //     method: 'POST'
-//     body: JSON.stringify(user)
+//     body: JSON.stringify({ name ,email, password })
 //     headers:
 //   }
 //   const response = await fetch(url, options);

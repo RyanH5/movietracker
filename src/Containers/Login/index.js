@@ -8,6 +8,7 @@ export class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      name: '',
       email: '',
       password: '',
       isLoading: false,
@@ -51,6 +52,10 @@ export class Login extends Component {
         this.state.hasErrored && 
         <h2>Your email or password does not match an existing user.</h2>
       }
+      <div>
+        
+      </div>
+      <h2>LOGIN</h2>
         <input
           onChange={this.handleChange}
           type="text"
@@ -67,6 +72,32 @@ export class Login extends Component {
           
         />
         <button>Submit</button>
+        <hr/>
+        <h2>SIGN UP</h2>
+        <input
+          onChange={this.handleChange}
+          type="text"
+          placeholder="Name"
+          value={this.state.name}
+          name="name"
+
+        />
+        <input
+          onChange={this.handleChange}
+          type="text"
+          placeholder="email"
+          value={this.state.email}
+          name="email"
+        />
+        <input
+          onChange={this.handleChange}
+          type="text"
+          placeholder="password"
+          value={this.state.password}
+          name="password"
+
+        />
+        <button>Sign Up</button>
       </form>
     );
   }

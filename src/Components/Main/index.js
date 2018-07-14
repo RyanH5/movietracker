@@ -6,8 +6,7 @@ import FormHolder from '../FormHolder';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 
-const Main = ({state}) => {
-
+const Main = (props) => {
   return (
     <Switch>
       <Route
@@ -17,7 +16,7 @@ const Main = ({state}) => {
       <Route
         exact path="/login"
         render={() => (
-          state.user.loginStatus ? (
+          props.loginStatus ? (
             <Redirect to="/" />
           ) : (
             <FormHolder />
@@ -33,12 +32,12 @@ const Main = ({state}) => {
 };
 
 Main.propTypes = {
-  state: PropTypes.object.isRequired
+  state: PropTypes.object
 };
 
 
 export const mapStateToProps = (state) => ({
-  state: state
+  loginStatus: state.user.loginStatus
 });
 
 export default withRouter(connect(mapStateToProps)(Main));

@@ -30,14 +30,8 @@ export class Login extends Component {
       this.props.userIsFalse(user);
     } else {
       this.setState({ isLoading: false });
-      this.props.handleLogin(user); 
+      this.props.toggleUserLogin(user.data); 
     }
-  }
-
-  handleError = ()=>{
-    return (
-      <h1>Your email or password does not match.</h1>
-    );    
   }
 
   render() {
@@ -72,16 +66,16 @@ export class Login extends Component {
 }
 
 Login.propTypes = {
-  handleLogin: PropTypes.func.isRequired,
+  toggleUserLogin: PropTypes.func.isRequired,
   userIsFalse: PropTypes.func.isRequired
-}
+};
 
 export const mapStateToProps = (state) => ({
   loginStatus: state.user.loginStatus
 });
 
 export const mapDispatchToProps = (dispatch)=>({
-  handleLogin: (user)=>dispatch(toggleUserLogin(user)),
+  toggleUserLogin: (user)=>dispatch(toggleUserLogin(user)),
   userIsFalse: (user)=>dispatch(userIsFalse(user))
 });
 

@@ -8,12 +8,11 @@ export class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: '',
       email: '',
       password: '',
       isLoading: false,
-      hasErrored: false
-
+      hasErrored: false,
+      pathAddition: ''
     };
   }
 
@@ -27,27 +26,18 @@ export class Login extends Component {
     this.setState({isLoading: true});
     const user = await loginUser(this.state); 
     if (!user){
-      console.log('no user');
-      
       this.setState({hasErrored: true, isLoading: false});
       this.props.userIsFalse(user);
     } else {
       this.setState({ isLoading: false });
       this.props.handleLogin(user); 
     }
-    
-    //same action for login and create new user
   }
 
   handleError = ()=>{
     return (
       <h1>Your email or password does not match.</h1>
     );    
-  }
-
-  whatTheFuck = (event)=>{
-    console.log('frombutton:', event);
-    
   }
 
   render() {

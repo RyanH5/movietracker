@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { postNewUserToDatabase} from '../../apiCalls';
-import { toggleUserLogin } from '../../Actions';
+import { loginUser } from '../../apiCalls';
+import { toggleUserLogin, userIsFalse } from '../../Actions';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 
@@ -12,8 +12,8 @@ export class Signup extends Component {
       email: '',
       password: '',
       isLoading: false,
-      hasErrored: false
-
+      hasErrored: false,
+      pathAddition: 'new'
     };
   }
 
@@ -25,29 +25,14 @@ export class Signup extends Component {
   handleSubmit = async (event)=>{
     event.preventDefault();
     this.setState({isLoading: true});
-    const user = await postNewUserToDatabase(this.state); 
+    const user = await loginUser(this.state); 
     if (!user){
-    //   console.log('no user');
-      
-      // this.setState({hasErrored: true, isLoading: false});
-      // this.props.userIsFalse(user);
+      this.setState({hasErrored: true, isLoading: false});
+      this.props.userIsFalse(user);
     } else {
       this.setState({ isLoading: false });
       this.props.handleLogin(user); 
     }
-    
-    //same action for login and create new user
-  }
-
-  // handleError = ()=>{
-  //   return (
-  //     <h1>Your email or password does not match.</h1>
-  //   );    
-  // }
-
-  whatTheFuck = (event)=>{
-    console.log('frombutton:', event);
-    
   }
 
   render() {
@@ -88,18 +73,18 @@ export class Signup extends Component {
   }
 }
 
-// Login.propTypes = {
-//   handleLogin: PropTypes.func.isRequired,
-//   userIsFalse: PropTypes.func.isRequired
-// }
+Signup.propTypes = {
+  handleLogin: PropTypes.func.isRequired,
+  userIsFalse: PropTypes.func.isRequired
+}
 
 export const mapStateToProps = (state) => ({
   loginStatus: state.user.loginStatus
 });
 
 export const mapDispatchToProps = (dispatch)=>({
-  // handleLogin: (user)=>dispatch(toggleUserLogin(user)),
-  // userIsFalse: (user)=>dispatch(userIsFalse(user))
+  handleLogin: (user)=>dispatch(toggleUserLogin(user)),
+  userIsFalse: (user)=>dispatch(userIsFalse(user))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Signup);

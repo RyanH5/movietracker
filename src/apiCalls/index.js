@@ -8,29 +8,17 @@ export const fetchSomeMovies = async ()=>{
   return moviesData; 
 };
 
-// export const postNewUserToDatabase = async (user) => {
-//   const url = 'http://localhost:3000/api/users/new';
-//   const options = {
-//     method: 'POST'
-//     body: JSON.stringify(user)
-//     headers:
-//   }
-//   const response = await fetch(url, options);
-//   const userData = await response.json();
-//   return userData.data;
-// };
-
-export const loginUser = async ({email, password}) => {
+export const loginUser = async ({ email, password, pathAddition, name}) => {
   try {
-    const url = 'http://localhost:3000/api/users/';
+    const url = `http://localhost:3000/api/users/${pathAddition}`;
     const options = {
       method: 'POST',
-      body: JSON.stringify({email, password}),
-        headers: {'Content-Type': 'application/json'}
+      body: JSON.stringify({email, password, name}),
+      headers: {'Content-Type': 'application/json'}
     };
     const response = await fetch(url, options);
     if (response.status !== 200){
-      throw Error(response.status)
+      throw Error(response.status);
     }
     const userData = await response.json();
     return userData;

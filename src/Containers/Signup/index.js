@@ -1,18 +1,19 @@
 import React, { Component } from 'react';
-import {loginUser} from '../../apiCalls';
+import { loginUser } from '../../apiCalls';
 import { toggleUserLogin, userIsFalse } from '../../Actions';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 
-export class Login extends Component {
+export class Signup extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      name: '',
       email: '',
       password: '',
       isLoading: false,
       hasErrored: false,
-      pathAddition: ''
+      pathAddition: 'new'
     };
   }
 
@@ -34,12 +35,6 @@ export class Login extends Component {
     }
   }
 
-  handleError = ()=>{
-    return (
-      <h1>Your email or password does not match.</h1>
-    );    
-  }
-
   render() {
     return (
       <form
@@ -47,9 +42,16 @@ export class Login extends Component {
       >
         {
           this.state.hasErrored && 
-        <h2>Your email or password does not match an existing user.</h2>
+        <h2>Email has already been used.</h2>
         }
-        <h2>LOGIN</h2>
+        <h2>SIGNUP</h2>
+        <input
+          onChange={this.handleChange}
+          type="text"
+          placeholder="Name"
+          value={this.state.name}
+          name="name"
+        />
         <input
           onChange={this.handleChange}
           type="text"
@@ -65,13 +67,13 @@ export class Login extends Component {
           name="password"   
         />
         <button
-        >Login</button>
+        >Sign Up</button>
       </form>
     );
   }
 }
 
-Login.propTypes = {
+Signup.propTypes = {
   handleLogin: PropTypes.func.isRequired,
   userIsFalse: PropTypes.func.isRequired
 }
@@ -85,4 +87,4 @@ export const mapDispatchToProps = (dispatch)=>({
   userIsFalse: (user)=>dispatch(userIsFalse(user))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
+export default connect(mapStateToProps, mapDispatchToProps)(Signup);

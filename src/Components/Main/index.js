@@ -2,6 +2,7 @@ import React from 'react';
 import { Route, withRouter, Redirect, Switch } from 'react-router-dom';
 import Login from '../../Containers/Login';
 import CardContainer from '../../Containers/CardContainer';
+import FormHolder from '../FormHolder';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 
@@ -19,7 +20,7 @@ const Main = ({state}) => {
           state.user.loginStatus ? (
             <Redirect to="/" />
           ) : (
-            <Login />
+            <FormHolder />
           )
         )}
       />

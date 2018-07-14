@@ -31,7 +31,7 @@ export class Signup extends Component {
       this.props.userIsFalse(user);
     } else {
       this.setState({ isLoading: false });
-      this.props.handleLogin(user); 
+      this.props.toggleUserLogin(user); 
     }
   }
 
@@ -74,16 +74,16 @@ export class Signup extends Component {
 }
 
 Signup.propTypes = {
-  handleLogin: PropTypes.func.isRequired,
+  toggleUserLogin: PropTypes.func.isRequired,
   userIsFalse: PropTypes.func.isRequired
-}
+};
 
 export const mapStateToProps = (state) => ({
   loginStatus: state.user.loginStatus
 });
 
 export const mapDispatchToProps = (dispatch)=>({
-  handleLogin: (user)=>dispatch(toggleUserLogin(user)),
+  toggleUserLogin: (user)=>dispatch(toggleUserLogin(user)),
   userIsFalse: (user)=>dispatch(userIsFalse(user))
 });
 

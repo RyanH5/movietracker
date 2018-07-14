@@ -2,17 +2,31 @@ import React from 'react';
 import { NavLink, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { toggleUserLogin } from '../../Actions';
 
 
 
-const Header = ({loginStatus}) => {
+const Header = (props) => {
+  console.log(props.user)
   return (
     <div className="header-section">
       <h1 className="App-title">Movie Tracker</h1>
       {
-        !loginStatus ?
-          <NavLink to="/login" className="nav">Login/SignUp</NavLink> :
-          <NavLink to="/" className="nav logout">Log Out</NavLink>
+        props.loginStatus ?
+          <NavLink 
+          //<Link to={this.props.myroute} onClick={hello}>Here</Link>
+            onClick={()=>props.toggleUserLogin(props.user)}
+            to="/" 
+            className="nav logout">
+            Log Out
+          </NavLink>
+          :
+          <NavLink 
+            to="/login" 
+            className="nav">
+            Login/SignUp
+          </NavLink> 
+          
       }
     </div>
   );
@@ -20,7 +34,12 @@ const Header = ({loginStatus}) => {
 
 
 export const mapStateToProps = (state) => ({
-  loginStatus: state.user.loginStatus
+  loginStatus: state.user.loginStatus,
+  user: state.user
+});
+
+export const mapDispatchToProps = (dispatch)=>({
+  toggleUserLogin: (user)=>dispatch(toggleUserLogin(user))
 });
 
 Header.propTypes = {
@@ -29,4 +48,4 @@ Header.propTypes = {
 
 
 
-export default withRouter(connect(mapStateToProps)(Header));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Header));

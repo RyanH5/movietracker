@@ -27,6 +27,8 @@ export class Login extends Component {
     this.setState({isLoading: true});
     const user = await loginUser(this.state); 
     if (!user){
+      console.log('no user');
+      
       this.setState({hasErrored: true, isLoading: false});
       this.props.userIsFalse(user);
     } else {
@@ -43,19 +45,21 @@ export class Login extends Component {
     );    
   }
 
+  whatTheFuck = (event)=>{
+    console.log('frombutton:', event);
+    
+  }
+
   render() {
     return (
       <form
         onSubmit={this.handleSubmit}
       >
-      {
-        this.state.hasErrored && 
+        {
+          this.state.hasErrored && 
         <h2>Your email or password does not match an existing user.</h2>
-      }
-      <div>
-        
-      </div>
-      <h2>LOGIN</h2>
+        }
+        <h2>LOGIN</h2>
         <input
           onChange={this.handleChange}
           type="text"
@@ -68,36 +72,10 @@ export class Login extends Component {
           type="text"
           placeholder="password"
           value={this.state.password}
-          name="password"
-          
+          name="password"   
         />
-        <button>Submit</button>
-        <hr/>
-        <h2>SIGN UP</h2>
-        <input
-          onChange={this.handleChange}
-          type="text"
-          placeholder="Name"
-          value={this.state.name}
-          name="name"
-
-        />
-        <input
-          onChange={this.handleChange}
-          type="text"
-          placeholder="email"
-          value={this.state.email}
-          name="email"
-        />
-        <input
-          onChange={this.handleChange}
-          type="text"
-          placeholder="password"
-          value={this.state.password}
-          name="password"
-
-        />
-        <button>Sign Up</button>
+        <button
+        >Login</button>
       </form>
     );
   }

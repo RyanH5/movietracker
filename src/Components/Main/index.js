@@ -3,6 +3,7 @@ import { Route, withRouter, Redirect, Switch } from 'react-router-dom';
 import Login from '../../Containers/Login';
 import CardContainer from '../../Containers/CardContainer';
 import {connect} from 'react-redux';
+import PropTypes from 'prop-types';
 
 const Main = ({state}) => {
 
@@ -29,6 +30,11 @@ const Main = ({state}) => {
     </Switch>
   );
 };
+
+Main.propTypes = {
+  state: PropTypes.object.isRequired
+};
+
 
 export const mapStateToProps = (state) => ({
   state: state

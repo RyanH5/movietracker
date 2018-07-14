@@ -10,7 +10,7 @@ const Header = () => {
       <NavLink to="/login" className="nav">Login/SignUp</NavLink>
       
     </div>
-  )
-}
+  );
+};
 
 export default Header;

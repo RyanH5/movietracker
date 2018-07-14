@@ -3,7 +3,12 @@ export const addMovies = (movies) => ({
   movies
 });
 
-export const toggleUserLogin = (userData) =>({
+export const toggleUserLogin = (user) =>({
   type: 'TOGGLE_USER_LOGIN',
-  userData
+  user
+});
+
+export const userIsFalse = (user) =>({
+  type: 'USER_IS_FALSE',
+  user
 });

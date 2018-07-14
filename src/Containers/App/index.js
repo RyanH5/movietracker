@@ -7,6 +7,7 @@ import { connect } from 'react-redux';
 import Header from '../../Components/Header';
 import Main from '../../Components/Main';
 import { withRouter } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 class App extends Component {
   constructor() {
@@ -30,6 +31,10 @@ class App extends Component {
     );
   }
 }
+
+App.propTypes = {
+  addMovies: PropTypes.func.isRequired
+};
 
 export const mapDispatchToProps = (dispatch) => ({
   addMovies: (movies) => dispatch(addMovies(movies))

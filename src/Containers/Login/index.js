@@ -1,14 +1,18 @@
 import React, { Component } from 'react';
 import {loginUser} from '../../apiCalls';
-import { toggleUserLogin } from '../../Actions';
+import { toggleUserLogin, userIsFalse } from '../../Actions';
 import {connect} from 'react-redux';
+import PropTypes from 'prop-types';
 
 export class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
       email: '',
-      password: ''
+      password: '',
+      isLoading: false,
+      hasErrored: false
+
     };
   }
 
@@ -19,15 +23,23 @@ export class Login extends Component {
 
   handleSubmit = async (event)=>{
     event.preventDefault();
+    this.setState({isLoading: true});
     const user = await loginUser(this.state); 
-    if (user.status === 'success'){
-      await this.props.handleLogin(user.data); //fetch call
+    if (!user){
+      this.setState({hasErrored: true, isLoading: false});
+      this.props.userIsFalse(user);
     } else {
-      console.log('not a user'); 
+      this.setState({ isLoading: false });
+      this.props.handleLogin(user); 
     }
-    //this.props.handleLogin(allUsers.data)
-    //dispatch to props allUsers.data
+    
     //same action for login and create new user
+  }
+
+  handleError = ()=>{
+    return (
+      <h1>Your email or password does not match.</h1>
+    );    
   }
 
   render() {
@@ -35,6 +47,7 @@ export class Login extends Component {
       <form
         onSubmit={this.handleSubmit}
       >
+      
         <input
           onChange={this.handleChange}
           type="text"
@@ -56,8 +69,18 @@ export class Login extends Component {
   }
 }
 
-export const mapDispatchToProps = (dispatch)=>({
-  handleLogin: (userData)=>dispatch(toggleUserLogin(userData))
+Login.propTypes = {
+  handleLogin: PropTypes.func.isRequired,
+  userIsFalse: PropTypes.func.isRequired
+}
+
+export const mapStateToProps = (state) => ({
+  loginStatus: state.user.loginStatus
 });
 
-export default connect(null, mapDispatchToProps)(Login);
+export const mapDispatchToProps = (dispatch)=>({
+  handleLogin: (user)=>dispatch(toggleUserLogin(user)),
+  userIsFalse: (user)=>dispatch(userIsFalse(user))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

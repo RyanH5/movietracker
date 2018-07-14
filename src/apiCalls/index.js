@@ -20,21 +20,21 @@ export const fetchSomeMovies = async ()=>{
 //   return userData.data;
 // };
 
-export const loginUser = async (user) => {
-  try{
+export const loginUser = async ({email, password}) => {
+  try {
     const url = 'http://localhost:3000/api/users/';
     const options = {
       method: 'POST',
-      body: JSON.stringify({email: user.email, password: user.password}),
+      body: JSON.stringify({email, password}),
         headers: {'Content-Type': 'application/json'}
-    }
+    };
     const response = await fetch(url, options);
-    if(response.status===200){
-
-      const userData = await response.json();
-      return userData;
-    } 
+    if (response.status !== 200){
+      throw Error(response.status)
+    }
+    const userData = await response.json();
+    return userData;
   } catch (error) {
-    throw Error(`${error.message}`)
+    return false;
   }
 };

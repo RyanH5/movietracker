@@ -17,7 +17,8 @@ const MovieCard = ({title, id, voteAverage, poster, overview, popularity, backdr
 
   return (
     <div className="movie-card">
-      <button>FAVORITE</button>
+      <button
+        className="fave-button">FAVORITE</button>
       <h1>{title}</h1>
       <h3>{voteAverage}</h3>
       <h4>{popularity}</h4>

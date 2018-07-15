@@ -8,7 +8,6 @@ import './styles.css'
 
 
 const Header = (props) => {
-  console.log(props.user)
   return (
     <div className="header-section">
       <h1 className="App-title">Movie Tracker</h1>
@@ -26,8 +25,7 @@ const Header = (props) => {
             to="/login" 
             className="nav">
             Login/SignUp
-          </NavLink> 
-          
+          </NavLink>   
       }
     </div>
   );

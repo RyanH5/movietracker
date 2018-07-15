@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import {loginUser} from '../../apiCalls';
-import { toggleUserLogin, userIsFalse } from '../../Actions';
+import {loginUser, fetchFavorites} from '../../apiCalls';
+import { toggleUserLogin, userIsFalse, addAllFavs } from '../../Actions';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 
@@ -30,7 +30,11 @@ export class Login extends Component {
       this.props.userIsFalse(user);
     } else {
       this.setState({ isLoading: false });
-      this.props.toggleUserLogin(user.data); 
+      this.props.toggleUserLogin(user.data);
+      const pathAddition = `${user.data.id}/favorites`; 
+      const favorites = await fetchFavorites(pathAddition);
+      this.props.addAllFavs(favorites.data);
+      
     }
   }
 
@@ -67,16 +71,19 @@ export class Login extends Component {
 
 Login.propTypes = {
   toggleUserLogin: PropTypes.func.isRequired,
-  userIsFalse: PropTypes.func.isRequired
+  userIsFalse: PropTypes.func.isRequired,
+  addAllFavs: PropTypes.func.isRequired
 };
 
 export const mapStateToProps = (state) => ({
-  loginStatus: state.user.loginStatus
+  loginStatus: state.user.loginStatus,
+  userId: state.user.id
 });
 
 export const mapDispatchToProps = (dispatch)=>({
   toggleUserLogin: (user)=>dispatch(toggleUserLogin(user)),
-  userIsFalse: (user)=>dispatch(userIsFalse(user))
+  userIsFalse: (user)=>dispatch(userIsFalse(user)),
+  addAllFavs: (favorites) => dispatch(addAllFavs(favorites))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);

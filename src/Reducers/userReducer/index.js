@@ -12,6 +12,9 @@ const userReducer = (state = { loginStatus: false }, action) => {
         ...state,
         loginStatus: state.loginStatus
       };
+
+    case 'ADD_ALL_FAVS':
+      return {...state, favorites: action.allFavorites};
     default:
       return state;
   }

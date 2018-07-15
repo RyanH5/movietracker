@@ -3,6 +3,11 @@ export const addMovies = (movies) => ({
   movies
 });
 
+export const addAllFavs = (allFavorites) => ({
+  type: 'ADD_ALL_FAVS',
+  allFavorites
+});
+
 export const addFavorite = (favorite) => ({
   type: 'ADD_FAVORITE',
   favorite

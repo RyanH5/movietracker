@@ -14,3 +14,8 @@ button {
   overflow: hidden;
   background-color: aliceblue;
 }
+
+.mydiv {
+  height: 30px;
+  width: 100px;
+}

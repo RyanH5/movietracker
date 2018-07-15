@@ -1,0 +1,11 @@
+.header-section {
+  background-color: darkseagreen;
+  height: 20vh;
+  font-size: 4vh;
+  color:  aliceblue;
+}
+
+.nav {
+  text-decoration: none;
+  color: burlywood;
+}

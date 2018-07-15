@@ -33,8 +33,7 @@ export class Login extends Component {
       this.props.toggleUserLogin(user.data);
       const pathAddition = `${user.data.id}/favorites`; 
       const favorites = await fetchFavorites(pathAddition);
-      this.props.addAllFavs(favorites.data);
-      
+      this.props.addAllFavs(favorites.data);     
     }
   }
 

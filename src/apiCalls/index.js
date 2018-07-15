@@ -9,7 +9,6 @@ export const fetchSomeMovies = async ()=>{
 };
 
 export const postFavorite = async (pathAddition, favorite, user) =>{
-  console.log(favorite)
   try {
     const url = `http://localhost:3000/api/users/${pathAddition}`;
     const options = {

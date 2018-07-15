@@ -21,22 +21,33 @@ const MovieCard = (props) => {
       <img src={posterPlaceholder} />;
   };
 
-  const allowAddFavorite = async ()=>{
+  const checkForDuplicate = (tag) => {
+    const allFavorites = props.state.user.favorites;
+    const uncleanTitle = tag.innerText;
+    const cleanTitle = uncleanTitle.substring(0, uncleanTitle.length - 8);
+    console.log(cleanTitle)
+    // allFavorites.some((fav) => {
+    //   return fav.name === 
+    // })
+  };
+
+  const allowAddFavorite = async (tag)=>{
+    checkForDuplicate(tag);
     props.state.user.loginStatus && 
     await props.addFavorite(movie);
-    console.log(props.state)
     postFavorite(pathAddition, props.state.favorite, props.state.user);
   };
 
 
   return (
     <div className="movie-card">
-      <button
-        className="fave-button"
-        onClick={() => allowAddFavorite()}
-      >
-      FAVORITE</button>
-      <h1>{title}</h1>
+      <h1 className="card-title">{title}
+        <button
+          className="fave-button"
+          onClick={(event) => allowAddFavorite(event.target.closest('h1'))}
+        >
+          FAVORITE</button>
+      </h1>
       <h3>vote average: {voteAverage}</h3>
       <h4>popularity: {popularity}</h4>
       {overview && <h5>summary: {overview}</h5>}

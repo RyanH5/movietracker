@@ -3,6 +3,11 @@ export const addMovies = (movies) => ({
   movies
 });
 
+export const addFavorite = (favorite) => ({
+  type: 'ADD_FAVORITE',
+  favorite
+});
+
 export const toggleUserLogin = (user) =>({
   type: 'TOGGLE_USER_LOGIN',
   user

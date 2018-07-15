@@ -14,7 +14,6 @@ const Header = (props) => {
       {
         props.loginStatus ?
           <NavLink 
-          //<Link to={this.props.myroute} onClick={hello}>Here</Link>
             onClick={()=>props.toggleUserLogin(props.user)}
             to="/" 
             className="nav logout">
@@ -31,7 +30,6 @@ const Header = (props) => {
   );
 };
 
-
 export const mapStateToProps = (state) => ({
   loginStatus: state.user.loginStatus,
   user: state.user
@@ -44,7 +42,5 @@ export const mapDispatchToProps = (dispatch)=>({
 Header.propTypes = {
   loginStatus: PropTypes.bool
 };
-
-
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Header));

@@ -41,8 +41,10 @@ const MovieCard = (props) => {
         await props.addFavorite(movie);
         postFavorite(pathAddition, props.state.favorite, props.state.user);
       }
+    } else {
+      props.history.push('/login');
     }
-  }
+  };
 
   // const handleFavorite = async (id)=>{
   //   if(props.isLoggedIn) {

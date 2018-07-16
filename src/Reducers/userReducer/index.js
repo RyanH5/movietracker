@@ -12,6 +12,11 @@ const userReducer = (state = { loginStatus: false }, action) => {
         ...state,
         loginStatus: state.loginStatus
       };
+    case 'REMOVE_FROM_FAVORITES':
+      return {...state, favorites: state.favorites.filter((fave)=>{
+        return action.favoriteId !== fave.id;
+      })
+      };
 
     case 'ADD_ALL_FAVS':
       return {...state, favorites: action.allFavorites};

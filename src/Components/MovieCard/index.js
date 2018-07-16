@@ -3,15 +3,19 @@ import './styles.css';
 import PropTypes from 'prop-types';
 import posterPlaceholder from './images/posterPlaceholder.jpg';
 import { connect } from 'react-redux';
-import { addFavorite } from '../../Actions';
+import { addFavorite, removeFromFavorites } from '../../Actions';
 import { postFavorite } from '../../apiCalls';
+import { withRouter } from 'react-router';
 
 
 const MovieCard = (props) => {
   const { title, voteAverage, poster, overview, popularity, id, releaseDate } = props;
-  const userId = props.state.user.id;
+  // const userId = props.state.user.id;
+  const userId = props.userId
   const movie = { id, userId, title, poster, releaseDate, voteAverage, overview };
   const pathAddition = 'favorites/new';
+  const pathDeletion = `${userId}/favorites/${id}`
+  // const loginStatus = props.state.user.loginStatus;
 
   const renderImage = () => {
     return poster ? <img
@@ -21,22 +25,39 @@ const MovieCard = (props) => {
       <img src={posterPlaceholder} />;
   };
 
-  const checkForDuplicate = (tag) => {
-    const allFavorites = props.state.user.favorites;
-    const uncleanTitle = tag.innerText;
-    const cleanTitle = uncleanTitle.substring(0, uncleanTitle.length - 8);
-    console.log(cleanTitle)
-    // allFavorites.some((fav) => {
-    //   return fav.name === 
-    // })
+  const isDuplicate = (id) => {
+    const nonDuplicates = props.allFavorites.filter((fav) => {
+      return fav.movie_id !== id;
+    });
+    return props.allFavorites.length !== nonDuplicates.length;
   };
 
-  const allowAddFavorite = async (tag)=>{
-    checkForDuplicate(tag);
-    props.state.user.loginStatus && 
-    await props.addFavorite(movie);
-    postFavorite(pathAddition, props.state.favorite, props.state.user);
-  };
+  // const removeFromFavorites = (id) => {
+  //   const nonDuplicates = props.allFavorites.filter((fav) => {
+  //     return fav.movie_id !== id;
+  //   });
+  //   //replace allFavorites with nonDuplicates
+  // }
+
+  const handleFavorite = async (id) => {
+    if (props.isLoggedIn) {
+      if (isDuplicate){
+        props.removeFromFavorites(id)
+        // await props.removeFaveFromDatabase(pathDeletion, props.userId, id )
+      }
+    }
+  }
+
+  // const handleFavorite = async (id)=>{
+  //   if(props.isLoggedIn) {
+  //     isDuplicate(id) ? 
+  //       this.removeFromFavorites(id) : 
+  //       await props.addFavorite(movie)
+  //     postFavorite(pathAddition, props.state.favorite, props.state.user);
+  //   } else {
+  //     props.history.push('/login');
+  //   }
+  // };
 
 
   return (
@@ -44,7 +65,7 @@ const MovieCard = (props) => {
       <h1 className="card-title">{title}
         <button
           className="fave-button"
-          onClick={(event) => allowAddFavorite(event.target.closest('h1'))}
+          onClick={() => handleFavorite(id)}
         >
           FAVORITE</button>
       </h1>
@@ -67,16 +88,23 @@ MovieCard.propTypes = {
   backdrop: PropTypes.string,
   releaseDate: PropTypes.string,
   addFavorite: PropTypes.func,
-  state: PropTypes.object
+  state: PropTypes.object,
+  isLoggedIn: PropTypes.bool,
+  removeFromFavorites: PropTypes.func,
+  allFavorites: PropTypes.array
 
 };
 
 export const mapStateToProps = (state) => ({
-  state
+  state,
+  isLoggedIn: state.user.loginStatus,
+  userId: state.user.id,
+  allFavorites: state.user.favorites
 });
 
 export const mapDispatchToProps = (dispatch) => ({
-  addFavorite: async (movie) => await dispatch(addFavorite(movie))
+  addFavorite: async (movie) => await dispatch(addFavorite(movie)),
+  removeFromFavorites: async (id) => await dispatch(removeFromFavorites(id))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(MovieCard);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(MovieCard));

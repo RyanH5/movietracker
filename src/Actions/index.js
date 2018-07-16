@@ -13,6 +13,11 @@ export const addFavorite = (favorite) => ({
   favorite
 });
 
+export const removeFromFavorites = (favoriteId) => ({
+  type: 'REMOVE_FROM_FAVORITES',
+  favoriteId
+});
+
 export const toggleUserLogin = (user) =>({
   type: 'TOGGLE_USER_LOGIN',
   user

@@ -32,20 +32,14 @@ const MovieCard = (props) => {
     return props.favorites.length !== nonDuplicates.length;
   };
 
-  // const removeFromFavorites = (id) => {
-  //   const nonDuplicates = props.favorites.filter((fav) => {
-  //     return fav.movie_id !== id;
-  //   });
-  //   //replace favorites with nonDuplicates
-  // }
-
   const handleFavorite = async (id) => {
-    if (props.isLoggedIn) {
-      if (isDuplicate){
-        console.log('1', props.favorites)
+     if (props.isLoggedIn) {
+      if (isDuplicate(id)){
         props.removeFromFavorites(id)
-        console.log('2', props.favorites)
         // await props.removeFaveFromDatabase(pathDeletion, props.userId, id )
+      } else {
+        await props.addFavorite(movie);
+        postFavorite(pathAddition, props.state.favorite, props.state.user);
       }
     }
   }

@@ -44,18 +44,6 @@ const MovieCard = (props) => {
       props.history.push('/login');
     }
   };
-  
-  // const handleFavorite = async (id)=>{
-    //   if(props.isLoggedIn) {
-      //     isDuplicate(id) ? 
-      //       this.removeFromFavorites(id) : 
-      //       await props.addFavorite(movie)
-      //     postFavorite(pathAddition, props.state.favorite, props.state.user);
-      //   } else {
-        //     props.history.push('/login');
-        //   }
-  // };
-
 
   return (
     <div className="movie-card">
@@ -88,8 +76,8 @@ MovieCard.propTypes = {
   state: PropTypes.object,
   isLoggedIn: PropTypes.bool,
   removeFromFavorites: PropTypes.func,
-  favorites: PropTypes.array
-
+  favorites: PropTypes.array,
+  history: PropTypes.object
 };
 
 export const mapStateToProps = (state) => ({

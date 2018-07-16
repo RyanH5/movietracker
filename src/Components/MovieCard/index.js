@@ -4,19 +4,17 @@ import PropTypes from 'prop-types';
 import posterPlaceholder from './images/posterPlaceholder.jpg';
 import { connect } from 'react-redux';
 import { addFavorite, removeFromFavorites } from '../../Actions';
-import { postFavorite } from '../../apiCalls';
+import { postFavorite, removeFaveFromDatabase } from '../../apiCalls';
 import { withRouter } from 'react-router';
+
 
 
 const MovieCard = (props) => {
   const { title, voteAverage, poster, overview, popularity, id, releaseDate } = props;
-  // const userId = props.state.user.id;
   const userId = props.userId
   const movie = { id, userId, title, poster, releaseDate, voteAverage, overview };
   const pathAddition = 'favorites/new';
-  const pathDeletion = `${userId}/favorites/${id}`
-  // const loginStatus = props.state.user.loginStatus;
-
+  
   const renderImage = () => {
     return poster ? <img
       src={`https://image.tmdb.org/t/p/w200${poster}`}
@@ -24,19 +22,20 @@ const MovieCard = (props) => {
 
       <img src={posterPlaceholder} />;
   };
-
+  
   const isDuplicate = (id) => {
     const nonDuplicates = props.favorites.filter((fav) => {
       return fav.movie_id !== id;
     });
     return props.favorites.length !== nonDuplicates.length;
   };
-
+  
   const handleFavorite = async (id) => {
-     if (props.isLoggedIn) {
+    const pathDeletion = `${userId}/favorites/${id}`;
+    if (props.isLoggedIn) {
       if (isDuplicate(id)){
         props.removeFromFavorites(id)
-        // await props.removeFaveFromDatabase(pathDeletion, props.userId, id )
+        await removeFaveFromDatabase(pathDeletion)
       } else {
         await props.addFavorite(movie);
         postFavorite(pathAddition, props.state.favorite, props.state.user);
@@ -45,16 +44,16 @@ const MovieCard = (props) => {
       props.history.push('/login');
     }
   };
-
+  
   // const handleFavorite = async (id)=>{
-  //   if(props.isLoggedIn) {
-  //     isDuplicate(id) ? 
-  //       this.removeFromFavorites(id) : 
-  //       await props.addFavorite(movie)
-  //     postFavorite(pathAddition, props.state.favorite, props.state.user);
-  //   } else {
-  //     props.history.push('/login');
-  //   }
+    //   if(props.isLoggedIn) {
+      //     isDuplicate(id) ? 
+      //       this.removeFromFavorites(id) : 
+      //       await props.addFavorite(movie)
+      //     postFavorite(pathAddition, props.state.favorite, props.state.user);
+      //   } else {
+        //     props.history.push('/login');
+        //   }
   // };
 
 

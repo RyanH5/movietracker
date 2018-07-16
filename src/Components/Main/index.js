@@ -23,10 +23,6 @@ const Main = (props) => {
           )
         )}
       />
-      {/* <Route
-        path='/'
-        component={PageNotFound}
-      /> */}
     </Switch>
   );
 };

@@ -3,18 +3,17 @@ import { NavLink, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { toggleUserLogin } from '../../Actions';
+import './styles.css'
 
 
 
 const Header = (props) => {
-  console.log(props.user)
   return (
     <div className="header-section">
       <h1 className="App-title">Movie Tracker</h1>
       {
         props.loginStatus ?
           <NavLink 
-          //<Link to={this.props.myroute} onClick={hello}>Here</Link>
             onClick={()=>props.toggleUserLogin(props.user)}
             to="/" 
             className="nav logout">
@@ -25,13 +24,11 @@ const Header = (props) => {
             to="/login" 
             className="nav">
             Login/SignUp
-          </NavLink> 
-          
+          </NavLink>   
       }
     </div>
   );
 };
-
 
 export const mapStateToProps = (state) => ({
   loginStatus: state.user.loginStatus,
@@ -45,7 +42,5 @@ export const mapDispatchToProps = (dispatch)=>({
 Header.propTypes = {
   loginStatus: PropTypes.bool
 };
-
-
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Header));

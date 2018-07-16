@@ -7,6 +7,7 @@ export const movieCleaner = (moviesData) => {
     const overview = movie.overview;
     const popularity = movie.popularity;
     const backdrop = movie.backdrop_path;
+    const releaseDate = movie.release_date;
 
     return ({
       title,
@@ -15,7 +16,8 @@ export const movieCleaner = (moviesData) => {
       poster,
       overview,
       popularity,
-      backdrop
+      backdrop,
+      releaseDate
     })
   })
 }

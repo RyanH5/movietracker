@@ -14,7 +14,7 @@ const userReducer = (state = { loginStatus: false }, action) => {
       };
     case 'REMOVE_FROM_FAVORITES':
       return {...state, favorites: state.favorites.filter((fave)=>{
-        return action.favoriteId !== fave.id;
+        return action.favoriteId !== fave.movie_id;
       })
       };
 

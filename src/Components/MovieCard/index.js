@@ -26,23 +26,25 @@ const MovieCard = (props) => {
   };
 
   const isDuplicate = (id) => {
-    const nonDuplicates = props.allFavorites.filter((fav) => {
+    const nonDuplicates = props.favorites.filter((fav) => {
       return fav.movie_id !== id;
     });
-    return props.allFavorites.length !== nonDuplicates.length;
+    return props.favorites.length !== nonDuplicates.length;
   };
 
   // const removeFromFavorites = (id) => {
-  //   const nonDuplicates = props.allFavorites.filter((fav) => {
+  //   const nonDuplicates = props.favorites.filter((fav) => {
   //     return fav.movie_id !== id;
   //   });
-  //   //replace allFavorites with nonDuplicates
+  //   //replace favorites with nonDuplicates
   // }
 
   const handleFavorite = async (id) => {
     if (props.isLoggedIn) {
       if (isDuplicate){
+        console.log('1', props.favorites)
         props.removeFromFavorites(id)
+        console.log('2', props.favorites)
         // await props.removeFaveFromDatabase(pathDeletion, props.userId, id )
       }
     }
@@ -91,7 +93,7 @@ MovieCard.propTypes = {
   state: PropTypes.object,
   isLoggedIn: PropTypes.bool,
   removeFromFavorites: PropTypes.func,
-  allFavorites: PropTypes.array
+  favorites: PropTypes.array
 
 };
 
@@ -99,7 +101,7 @@ export const mapStateToProps = (state) => ({
   state,
   isLoggedIn: state.user.loginStatus,
   userId: state.user.id,
-  allFavorites: state.user.favorites
+  favorites: state.user.favorites
 });
 
 export const mapDispatchToProps = (dispatch) => ({

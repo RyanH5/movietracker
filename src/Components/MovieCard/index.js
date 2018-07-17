@@ -56,8 +56,8 @@ const MovieCard = (props) => {
       <h1 className="card-title">{title}</h1>
       
       {renderImage()}
-      <h4>Vote average:  {voteAverage}</h4>
-      <h4>Popularity:  {popularity}</h4>
+      <h4><span>Vote average:<span>&nbsp;&nbsp;&nbsp;</span></span>{voteAverage}</h4>
+      <h4><span>Popularity:<span>&nbsp;&nbsp;&nbsp;</span></span>{popularity}</h4>
       {overview && <h5 className="overview">Summary:   {overview}</h5>}
     </div>
   );

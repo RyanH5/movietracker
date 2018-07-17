@@ -18,6 +18,11 @@ button {
   padding: 20px 10px 10px 10px;
 }
 
+span {
+  font-style: italic;
+  color: blue;
+}
+
 .mydiv {
   height: 30px;
   width: 100px;

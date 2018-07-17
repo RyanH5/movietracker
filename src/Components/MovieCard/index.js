@@ -25,8 +25,10 @@ const MovieCard = (props) => {
   
   const isDuplicate = (id) => {
     const nonDuplicates = props.favorites.filter((fav) => {
-      return fav.movie_id !== id;
+      return fav.id !== id;
     });
+    // console.log('store:',props.favorites, 'nonDupes: ', nonDuplicates);
+    
     return props.favorites.length !== nonDuplicates.length;
   };
   
@@ -34,11 +36,15 @@ const MovieCard = (props) => {
     const pathDeletion = `${userId}/favorites/${id}`;
     if (props.isLoggedIn) {
       if (isDuplicate(id)){
+        // console.log('trying to remove');
+        
         props.removeFromFavorites(id)
         await removeFaveFromDatabase(pathDeletion)
       } else {
         await props.addFavorite(movie);
-        postFavorite(pathAddition, props.state.favorite, props.state.user);
+        // console.log('path:', pathAddition, "fave:", movie, 'user:',props.state.user);
+        
+        postFavorite(pathAddition, movie, props.state.user);
       }
     } else {
       props.history.push('/login');
@@ -88,8 +94,8 @@ export const mapStateToProps = (state) => ({
 });
 
 export const mapDispatchToProps = (dispatch) => ({
-  addFavorite: async (movie) => await dispatch(addFavorite(movie)),
-  removeFromFavorites: async (id) => await dispatch(removeFromFavorites(id))
+  addFavorite: (movie) => dispatch(addFavorite(movie)),
+  removeFromFavorites: (id) => dispatch(removeFromFavorites(id))
 });
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(MovieCard));

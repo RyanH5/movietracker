@@ -16,6 +16,11 @@ const Header = (props) => {
         props.loginStatus ?
           <div className="logged-in-nav">
             <NavLink
+              to="/"
+              className="nav home">
+              Home
+            </NavLink>
+            <NavLink
               to="/favorites"
               className="nav favorites">
               Favorites
@@ -29,11 +34,19 @@ const Header = (props) => {
           </div>
 
           :
-          <NavLink
-            to="/login"
-            className="nav">
-            Login/SignUp
-          </NavLink>
+          <div>
+            <NavLink
+              to="/"
+              className="nav home">
+              Home
+            </NavLink>
+            <NavLink
+              to="/login"
+              className="nav">
+              Login/SignUp
+            </NavLink>
+          </div>
+          
       }
     </div>
   );

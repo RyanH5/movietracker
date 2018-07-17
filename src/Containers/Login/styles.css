@@ -1,0 +1,19 @@
+.login-btn {
+  cursor: pointer;
+  width: 265px;
+  margin-bottom: 40px;
+}
+
+input {
+  height: 30px;
+  margin-block-end: 15px;
+  width: 240px;
+  padding: 0px 10px;
+}
+
+.login-form {
+  cursor: pointer;
+  width: 250px;
+  margin-bottom: 40px;
+  margin: auto;
+}

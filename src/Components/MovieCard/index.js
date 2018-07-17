@@ -11,7 +11,7 @@ import { withRouter } from 'react-router';
 
 const MovieCard = (props) => {
   const { title, voteAverage, poster, overview, popularity, id, releaseDate } = props;
-  const userId = props.userId
+  const userId = props.userId;
   const movie = { id, userId, title, poster, releaseDate, voteAverage, overview };
   const pathAddition = 'favorites/new';
   
@@ -27,7 +27,6 @@ const MovieCard = (props) => {
     const nonDuplicates = props.favorites.filter((fav) => {
       return fav.id !== id;
     });
-    // console.log('store:',props.favorites, 'nonDupes: ', nonDuplicates);
     
     return props.favorites.length !== nonDuplicates.length;
   };
@@ -36,13 +35,11 @@ const MovieCard = (props) => {
     const pathDeletion = `${userId}/favorites/${id}`;
     if (props.isLoggedIn) {
       if (isDuplicate(id)){
-        // console.log('trying to remove');
         
-        props.removeFromFavorites(id)
-        await removeFaveFromDatabase(pathDeletion)
+        props.removeFromFavorites(id);
+        await removeFaveFromDatabase(pathDeletion);
       } else {
         await props.addFavorite(movie);
-        // console.log('path:', pathAddition, "fave:", movie, 'user:',props.state.user);
         
         postFavorite(pathAddition, movie, props.state.user);
       }
@@ -52,14 +49,13 @@ const MovieCard = (props) => {
   };
 
   return (
-    <div className="movie-card">
-      <h1 className="card-title">{title}
-        <button
-          className="fave-button"
-          onClick={() => handleFavorite(id)}
-        >
-          FAVORITE</button>
-      </h1>
+    <div className="movie-card"> 
+      <button
+        className="fave-button"
+        onClick={() => handleFavorite(id)}>
+        FAVORITE
+      </button>
+      <h1 className="card-title">{title}</h1>
       <h3>vote average: {voteAverage}</h3>
       <h4>popularity: {popularity}</h4>
       {overview && <h5>summary: {overview}</h5>}

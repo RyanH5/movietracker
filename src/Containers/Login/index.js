@@ -3,6 +3,7 @@ import {loginUser, fetchFavorites} from '../../apiCalls';
 import { toggleUserLogin, userIsFalse, addAllFavs } from '../../Actions';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
+import './styles.css';
 
 export class Login extends Component {
   constructor(props) {
@@ -41,6 +42,7 @@ export class Login extends Component {
     return (
       <form
         onSubmit={this.handleSubmit}
+        className="login-form"
       >
         {
           this.state.hasErrored && 
@@ -62,6 +64,7 @@ export class Login extends Component {
           name="password"   
         />
         <button
+          className="login-btn"
         >Login</button>
       </form>
     );

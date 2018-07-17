@@ -1,11 +1,26 @@
 .header-section {
-  background-color: darkseagreen;
   height: 20vh;
   font-size: 4vh;
-  color:  aliceblue;
+  color: #fff;
+  font-family: 'Courier New', Courier, monospace;
+  padding-top: 30px;
+  width: 100%;
 }
 
 .nav {
   text-decoration: none;
-  color: burlywood;
+  color: #fff;
+}
+
+.logged-out-nav {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  top: 20px;
+  right: 20px;
+}
+
+.active {
+  color: fff;
+  border-bottom: 2px solid #fff;
 }

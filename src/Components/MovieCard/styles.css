@@ -2,17 +2,20 @@ button {
   font-family: 'Monoton';
   font-style: italic;
   padding: 7px;
-  color: cadetblue;
+  background: #111580;
   border-radius: 7px;
+  color: #98c5da;
+  margin-bottom: 20px;
 }
 
 .movie-card {
   border-radius: 10px;
-  border: 4px solid darkcyan;
-  width: 24%;
-  height: 300px;
+  width: 23%;
+  box-shadow: 3px 3px 3px black;
+  margin-bottom: 30px;
   overflow: hidden;
   background-color: aliceblue;
+  padding-top: 20px;
 }
 
 .mydiv {

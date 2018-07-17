@@ -34,7 +34,7 @@ const Header = (props) => {
           </div>
 
           :
-          <div>
+          <div className="logged-out-nav">
             <NavLink
               to="/"
               className="nav home">
@@ -43,7 +43,7 @@ const Header = (props) => {
             <NavLink
               to="/login"
               className="nav">
-              Login/SignUp
+              Login<br></br>SignUp
             </NavLink>
           </div>
           

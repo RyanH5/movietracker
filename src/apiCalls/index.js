@@ -67,3 +67,17 @@ export const fetchFavorites = async (pathAddition) => {
     return false;
   }
 };
+
+export const removeFaveFromDatabase = async (pathDeletion) => {
+  try {
+    const url = `http://localhost:3000/api/users/${pathDeletion}`;
+    const options = {
+      method: 'DELETE',
+      headers: { 'Content-Type': 'application/json' }
+    };
+    const response = await fetch(url, options);
+    const deletedFave = await response.json();
+  } catch (error) {
+    return false;
+  }
+};

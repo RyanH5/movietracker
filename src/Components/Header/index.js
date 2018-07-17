@@ -8,23 +8,32 @@ import './styles.css'
 
 
 const Header = (props) => {
+  
   return (
     <div className="header-section">
       <h1 className="App-title">Movie Tracker</h1>
       {
         props.loginStatus ?
-          <NavLink 
-            onClick={()=>props.toggleUserLogin(props.user)}
-            to="/" 
-            className="nav logout">
-            Log Out
-          </NavLink>
+          <div className="logged-in-nav">
+            <NavLink
+              to="/favorites"
+              className="nav favorites">
+              Favorites
+            </NavLink>
+            <NavLink
+              onClick={() => props.toggleUserLogin(props.user)}
+              to="/"
+              className="nav logout">
+              Log Out
+            </NavLink>
+          </div>
+
           :
-          <NavLink 
-            to="/login" 
+          <NavLink
+            to="/login"
             className="nav">
             Login/SignUp
-          </NavLink>   
+          </NavLink>
       }
     </div>
   );
@@ -35,8 +44,8 @@ export const mapStateToProps = (state) => ({
   user: state.user
 });
 
-export const mapDispatchToProps = (dispatch)=>({
-  toggleUserLogin: (user)=>dispatch(toggleUserLogin(user))
+export const mapDispatchToProps = (dispatch) => ({
+  toggleUserLogin: (user) => dispatch(toggleUserLogin(user))
 });
 
 Header.propTypes = {

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, withRouter, Redirect, Switch } from 'react-router-dom';
-import Login from '../../Containers/Login';
 import CardContainer from '../../Containers/CardContainer';
+import FavoritesContainer from '../../Containers/FavoritesContainer';
 import FormHolder from '../FormHolder';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
@@ -12,6 +12,10 @@ const Main = (props) => {
       <Route
         exact path="/"
         component={CardContainer}
+      /> 
+      <Route
+        exact path="/favorites"
+        component={FavoritesContainer}
       />
       <Route
         exact path="/login"
@@ -28,9 +32,9 @@ const Main = (props) => {
 };
 
 Main.propTypes = {
-  state: PropTypes.object
+  state: PropTypes.object,
+  loginStatus: PropTypes.bool
 };
-
 
 export const mapStateToProps = (state) => ({
   loginStatus: state.user.loginStatus

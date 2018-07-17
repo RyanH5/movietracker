@@ -15,12 +15,16 @@ button {
   margin-bottom: 30px;
   overflow: hidden;
   background-color: aliceblue;
-  padding-top: 20px;
+  padding: 20px 10px 10px 10px;
 }
 
 .mydiv {
   height: 30px;
   width: 100px;
+}
+
+.overview {
+  margin: 15px auto;
 }
 
 @media screen and (max-width: 950px) { 

@@ -54,11 +54,11 @@ const MovieCard = (props) => {
         FAVORITE
       </button>
       <h1 className="card-title">{title}</h1>
-      <h3>vote average: {voteAverage}</h3>
-      <h4>popularity: {popularity}</h4>
-      {overview && <h5>summary: {overview}</h5>}
-
+      
       {renderImage()}
+      <h4>Vote average:  {voteAverage}</h4>
+      <h4>Popularity:  {popularity}</h4>
+      {overview && <h5 className="overview">Summary:   {overview}</h5>}
     </div>
   );
 };

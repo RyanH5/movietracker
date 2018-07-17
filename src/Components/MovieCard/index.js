@@ -8,7 +8,9 @@ import { postFavorite, removeFaveFromDatabase } from '../../apiCalls';
 import { withRouter } from 'react-router';
 
 const MovieCard = (props) => {
-  const { title, voteAverage, poster, overview, popularity, id, releaseDate } = props;
+  const { title, voteAverage, poster, overview, popularity, id, releaseDate, isFave } = props;
+  
+  
   const userId = props.userId;
   const movie = { id, userId, title, poster, releaseDate, voteAverage, overview };
   const pathAddition = 'favorites/new';
@@ -28,18 +30,29 @@ const MovieCard = (props) => {
     
     return props.favorites.length !== nonDuplicates.length;
   };
+
+  const toggleFave = (id)=>{
+    props.favorites.forEach((fave)=>{
+      if (fave.id === id) {
+        fave.isFave = !fave.isFave;
+      }
+      
+    })
+  }
   
   const handleFavorite = async (id) => {
+    console.log(props);
     const pathDeletion = `${userId}/favorites/${id}`;
     if (props.isLoggedIn) {
       if (isDuplicate(id)){
         
+        await removeFaveFromDatabase(pathDeletion); //check that response is successful before adding to the store
         props.removeFromFavorites(id);
-        await removeFaveFromDatabase(pathDeletion);
       } else {
-        await props.addFavorite(movie);
         
-        postFavorite(pathAddition, movie, props.state.user);
+        await postFavorite(pathAddition, movie, props.state.user);
+        props.addFavorite(movie);
+        
       }
     } else {
       props.history.push('/login');
@@ -50,8 +63,13 @@ const MovieCard = (props) => {
     <div className="movie-card"> 
       <button
         className="fave-button"
-        onClick={() => handleFavorite(id)}>
-        FAVORITE
+        onClick={() => handleFavorite(id)}
+        style={{
+          color: isFave ? 'indianred' : '#98c5da'
+        }
+        }
+      >
+    FAVORITE
       </button>
       <h1 className="card-title">{title}</h1>
       
@@ -77,14 +95,16 @@ MovieCard.propTypes = {
   isLoggedIn: PropTypes.bool,
   removeFromFavorites: PropTypes.func,
   favorites: PropTypes.array,
-  history: PropTypes.object
+  history: PropTypes.object,
+  isFave: PropTypes.bool
 };
 
 export const mapStateToProps = (state) => ({
   state,
   isLoggedIn: state.user.loginStatus,
   userId: state.user.id,
-  favorites: state.user.favorites
+  favorites: state.user.favorites,
+
 });
 
 export const mapDispatchToProps = (dispatch) => ({

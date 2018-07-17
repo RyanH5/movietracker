@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import MovieCard from '../../Components/MovieCard';
 import './styles.css';
 import PropTypes from 'prop-types';
+import {NavLink, withRouter} from 'react-router-dom';
 
 export class FavoritesContainer extends Component {
   constructor(props) {
@@ -10,13 +11,26 @@ export class FavoritesContainer extends Component {
   }
 
   favoritesDisplay = () => {
-    const favorites = this.props.favorites.map((movie, index) => {
-      return <MovieCard  {...movie} key={index} />;
-    });
-    return favorites;
+    if (this.props.favorites.length) {
+      const favorites = this.props.favorites.map((movie, index) => {
+        return <MovieCard  {...movie} key={index} />;
+      });
+      return favorites;
+    } else {
+      return <div>
+        <h3>Sorry, no faves.</h3>
+        <NavLink
+          to="/"
+          className="nav logout">
+          Back to Movies.
+        </NavLink>;
+      </div>;
+    }
   }
 
-  render () {
+  render() {
+    // console.log(this.props.favorites);
+
     return (
       <div className="favorites-container">{this.favoritesDisplay()}</div>
     );
@@ -31,6 +45,6 @@ export const mapStateToProps = (state) => ({
   favorites: state.user.favorites
 });
 
-export default connect(mapStateToProps)(FavoritesContainer);
+export default withRouter(connect(mapStateToProps)(FavoritesContainer));
 
 

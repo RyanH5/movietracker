@@ -76,9 +76,7 @@ export const removeFaveFromDatabase = async (pathDeletion) => {
       headers: { 'Content-Type': 'application/json' }
     };
     const response = await fetch(url, options);
-    console.log(response)
     const deletedFave = await response.json();
-    console.log(deletedFave)
   } catch (error) {
     return false;
   }

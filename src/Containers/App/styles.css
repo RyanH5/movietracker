@@ -3,6 +3,11 @@
   padding: 0px;
 }
 
+body {
+  height: 100vh;;
+  background: linear-gradient(lightblue, navy);
+}
+
 .App {
   text-align: center;
 }

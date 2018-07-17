@@ -3,6 +3,7 @@ import { loginUser } from '../../apiCalls';
 import { toggleUserLogin, userIsFalse } from '../../Actions';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
+import './styles.css';
 
 export class Signup extends Component {
   constructor(props) {
@@ -39,6 +40,7 @@ export class Signup extends Component {
     return (
       <form
         onSubmit={this.handleSubmit}
+        className="sign-up-form"
       >
         {
           this.state.hasErrored && 
@@ -67,6 +69,7 @@ export class Signup extends Component {
           name="password"   
         />
         <button
+          className="sing-up"
         >Sign Up</button>
       </form>
     );

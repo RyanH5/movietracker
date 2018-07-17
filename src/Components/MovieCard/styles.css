@@ -22,3 +22,21 @@ button {
   height: 30px;
   width: 100px;
 }
+
+@media screen and (max-width: 950px) { 
+  .movie-card {
+    width: 30%;
+  }
+ }
+
+ @media screen and (max-width: 600px) { 
+  .movie-card {
+    width: 40%;
+  }
+ }
+
+ @media screen and (max-width: 400px) { 
+  .movie-card {
+    width: 85%;
+  }
+ }

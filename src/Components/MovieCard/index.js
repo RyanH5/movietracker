@@ -7,8 +7,6 @@ import { addFavorite, removeFromFavorites } from '../../Actions';
 import { postFavorite, removeFaveFromDatabase } from '../../apiCalls';
 import { withRouter } from 'react-router';
 
-
-
 const MovieCard = (props) => {
   const { title, voteAverage, poster, overview, popularity, id, releaseDate } = props;
   const userId = props.userId;

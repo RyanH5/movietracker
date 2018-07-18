@@ -15,7 +15,7 @@ const userReducer = (state = { loginStatus: false }, action) => {
     case 'ADD_FAVORITE':
       return {
         ...state, favorites:[...state.favorites, {...action.favorite, isFave: true}]
-      }
+      };
     case 'REMOVE_FROM_FAVORITES':
       return {...state, favorites: state.favorites.filter((fave)=>{
         return action.favoriteId !== fave.id;
@@ -26,6 +26,9 @@ const userReducer = (state = { loginStatus: false }, action) => {
       return {...state, favorites: [...action.allFavorites.map((fave)=>{
         return {...fave, isFave: true};
       })]};
+
+    case 'USER_LOGOUT':
+      return {...state, id: '', name: '', favorites: [], loginStatus: false};
     default:
       return state;
   }

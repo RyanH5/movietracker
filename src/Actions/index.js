@@ -27,3 +27,8 @@ export const userIsFalse = (user) =>({
   type: 'USER_IS_FALSE',
   user
 });
+
+export const userLogout = (user)=>({
+  type: 'USER_LOGOUT',
+  user
+});

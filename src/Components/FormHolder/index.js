@@ -20,7 +20,7 @@ export const FormHolder = (props) => {
 };
 
 FormHolder.propTypes = {
-  history: PropTypes.func
+  history: PropTypes.object
 };
 
 export default withRouter(FormHolder);

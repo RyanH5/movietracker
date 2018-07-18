@@ -82,9 +82,9 @@ export class Signup extends Component {
 }
 
 Signup.propTypes = {
-  toggleUserLogin: PropTypes.func.isRequired,
-  userIsFalse: PropTypes.func.isRequired,
-  userSignup: PropTypes.func.isRequired
+  toggleUserLogin: PropTypes.func,
+  userIsFalse: PropTypes.func,
+  userSignup: PropTypes.func
 };
 
 export const mapStateToProps = (state) => ({

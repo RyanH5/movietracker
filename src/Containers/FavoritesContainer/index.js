@@ -11,7 +11,7 @@ export class FavoritesContainer extends Component {
   }
 
   favoritesDisplay = () => {
-    if (this.props.favorites) {
+    if (this.props.favorites.length) {
       const favorites = this.props.favorites.map((movie, index) => {
         return <MovieCard  {...movie} key={index} />;
       });

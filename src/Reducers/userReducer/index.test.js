@@ -10,10 +10,13 @@ describe('userReducer', () => {
   });
 
   it('should return state with a new movie', () => {
-    const movies = [{isFave: false, title: 'happy'}];
-    const expected = movies;
-    const result = userReducer(undefined, actions.addMovies(movies));
+    const initial = {id: '1', loginStatus: false, name: 'jeff'};
+    const user = {id: '1', loginStatus: true, name: 'jeff'};
+    const expected = user;
+    const result = userReducer(initial, actions.toggleUserLogin(user));
 
     expect(result).toEqual(expected);
   });
+
+  it('should ')
 });

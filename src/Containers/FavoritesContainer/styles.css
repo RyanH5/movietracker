@@ -1,5 +1,5 @@
 .favorites-container {
-  background-color: indianred; 
+  background-color: #b3c4dc; 
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;

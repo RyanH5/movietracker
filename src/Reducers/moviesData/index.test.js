@@ -10,7 +10,7 @@ describe('moviesData', () => {
   });
 
   it('should return state with a new movie', () => {
-    const movies = [{title: 'happy'}];
+    const movies = [{isFave: false, title: 'happy'}];
     const expected = movies;
     const result = moviesData(undefined, actions.addMovies(movies));
 

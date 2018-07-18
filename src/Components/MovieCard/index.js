@@ -113,4 +113,6 @@ export const mapDispatchToProps = (dispatch) => ({
   removeFromFavorites: (id) => dispatch(removeFromFavorites(id))
 });
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(MovieCard));
+export default withRouter(
+  connect(mapStateToProps, mapDispatchToProps)(MovieCard)
+);

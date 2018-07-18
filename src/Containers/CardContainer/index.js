@@ -43,9 +43,13 @@ export class CardContainer extends Component {
     return (
       <div>
         {!this.props.favorites ?  
-          <div className="card-container">{this.cardsDisplay()}</div>
+          <div className="card-container">
+            {this.cardsDisplay()}
+          </div>
           :
-          <div className="card-container">{this.updateFaveAttributeOnLoad()}</div> 
+          <div className="card-container">
+            {this.updateFaveAttributeOnLoad()}
+          </div> 
         }
       </div>
     );

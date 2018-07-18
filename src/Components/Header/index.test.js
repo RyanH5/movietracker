@@ -11,7 +11,7 @@ describe('Header', () => {
 
   beforeEach(() => {
     mockUserLogout = jest.fn();
-    mockUser = {name: 'Bill', id: 4, loginStatus: true}
+    mockUser = {name: 'Bill', id: 4, loginStatus: true};
     wrapper = shallow(<Header userLogout={mockUserLogout}/>);
   });
 
@@ -23,6 +23,6 @@ describe('Header', () => {
   it.skip('should call userLogout on click', ()=> {
     wrapper.find('.logout').last().simulate('click');
 
-    expect(mockUserLogout).toHaveBeenCalledWith(mockUser)
+    expect(mockUserLogout).toHaveBeenCalledWith(mockUser);
   });
 });

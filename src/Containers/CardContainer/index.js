@@ -31,10 +31,12 @@ export class CardContainer extends Component {
   }
 
   cardsDisplay = () => {
-    const cards = this.props.movies.map((movie, index) => {
-      return <MovieCard  {...movie} key={index} />;
-    });
-    return cards;
+    if (this.props.movies) {
+      const cards = this.props.movies.map((movie, index) => {
+        return <MovieCard  {...movie} key={index} />;
+      });
+      return cards;
+    }
   }
 
   render () {
@@ -51,7 +53,7 @@ export class CardContainer extends Component {
 }
 
 CardContainer.propTypes = {
-  movies: PropTypes.array.isRequired,
+  movies: PropTypes.array,
   favorites: PropTypes.array
 };
 

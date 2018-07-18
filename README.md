@@ -1,13 +1,12 @@
-
+![Movie Tracker](/screen-shot.png)
 
 # Movie Tracker
 
-This app allows a user to select from a collection of movies from the MovieDB api.  When the user selects a movie, they can see more details about the movie or designate the movie as a favorite.  The app includes signin/login functionality.
+This app allows a user to select from a collection of movies from the MovieDB api.  .  The app includes signin/login functionality.  The user may also designate some files as favorites and the favorites are persisted in the backend, a Postgres database.
 
 ### Prerequisites
 
 Clone the repository and run
-
 ```npm install```
 
 ```npm start```

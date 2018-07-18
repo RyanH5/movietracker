@@ -9,45 +9,18 @@ export class CardContainer extends Component {
     super(props);
   }
 
-  // updateFaveAttributeOnLoad = ()=>{
-    
-  //   const updatedMovies = this.props.movies.reduce((acc, movie) => {
-
-  //     const inner = this.props.favorites.reduce((accInner, fave) => {
-  //       if (movie.id === fave.id) {
-  //         accInner.push({ ...movie, isFave: true });
-  //       } else {
-  //         accInner.push({ ...movie, isFave: false });
-  //       }
-  //       return [...accInner];
-  //     }, []);
-
-  //     return [...acc, ...inner];
-  //   }, []);
-
-  //   return this.makeCards(updatedMovies);
-  // }
-
-  // makeCards = (updatedMovies)=>{
-  //   console.log(updatedMovies);
-    
-  //   const cards = updatedMovies.map((movie, index) =>{
-  //     return <MovieCard {...movie} key={index} />;
-  //   });
-  //   return cards;
-  // }
   updateFaveAttributeOnLoad = () => {
     const updatedMovies = this.props.movies.reduce((acc, movie, index) => {
       this.props.favorites.forEach((fave) => {
         if (fave.id === movie.id) {
-          movie = { ...movie, isFave: true }
+          movie = { ...movie, isFave: true };
         }
-      })
+      });
 
-      acc = [...acc, movie]
-      return acc
-    }, [])
-    return this.makeCards(updatedMovies)
+      acc = [...acc, movie];
+      return acc;
+    }, []);
+    return this.makeCards(updatedMovies);
   }
 
   makeCards = (updatedMovies) => {
@@ -63,9 +36,7 @@ export class CardContainer extends Component {
     });
     return cards;
   }
-  //<div className="card-container">{this.cardsDisplay()}</div>
 
-  
   render () {
     return (
       <div>
@@ -91,5 +62,3 @@ export const mapStateToProps = (state) => ({
 });
 
 export default connect(mapStateToProps)(CardContainer);
-
-

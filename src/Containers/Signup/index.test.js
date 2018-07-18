@@ -1,21 +1,20 @@
-import Login from './index';
+import {Signup} from './index';
 import { shallow, mount } from 'enzyme';
 import React from 'react';
 
 describe('Login', () => {
   it('should match snapshot', () => {
-    let wrapper = shallow(<Login />);
+    let wrapper = shallow(<Signup />);
 
     expect(wrapper).toMatchSnapshot();
   });
-  
   
   describe('handleChange', () => {
     let spy;
     let wrapper;
 
     beforeEach(() => {
-      wrapper = mount(<Login />);
+      wrapper = mount(<Signup />);
       spy = jest.spyOn(wrapper.instance(), 'handleChange');
     });
 
@@ -44,8 +43,5 @@ describe('Login', () => {
 
       expect(spy).toHaveBeenCalled();
     });
-
-
-
   });
 });

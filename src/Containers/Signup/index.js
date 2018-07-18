@@ -32,7 +32,11 @@ export class Signup extends Component {
       this.props.userIsFalse(user);
     } else {
       this.setState({ isLoading: false });
-      user = { ...user, id: user.id, name: this.state.name, favorites: [], loginStatus: true }
+      user = { ...user, 
+        id: user.id, 
+        name: this.state.name, 
+        favorites: [], 
+        loginStatus: true };
       this.props.userSignup(user); 
     }
   }
@@ -79,7 +83,8 @@ export class Signup extends Component {
 
 Signup.propTypes = {
   toggleUserLogin: PropTypes.func.isRequired,
-  userIsFalse: PropTypes.func.isRequired
+  userIsFalse: PropTypes.func.isRequired,
+  userSignup: PropTypes.func.isRequired
 };
 
 export const mapStateToProps = (state) => ({

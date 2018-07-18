@@ -44,19 +44,11 @@ const MovieCard = (props) => {
     return props.favorites.length !== nonDuplicates.length;
   };
 
-  // const toggleFave = (id) => {
-  //   props.favorites.forEach((fave) => {
-  //     if (fave.id === id) {
-  //       fave.isFave = !fave.isFave;
-  //     }
-
-  //   });
-  // };
   const handleFavorite = async (id) => {
     const pathDeletion = `${userId}/favorites/${id}`;
     if (props.isLoggedIn) {
       if (isDuplicate(id)) {
-        await removeFaveFromDatabase(pathDeletion); //check that response is successful before adding to the store
+        await removeFaveFromDatabase(pathDeletion); 
         props.removeFromFavorites(id);
       } else {
         await postFavorite(pathAddition, movie, props.state.user);
@@ -93,6 +85,7 @@ const MovieCard = (props) => {
 MovieCard.propTypes = {
   title: PropTypes.string,
   id: PropTypes.number,
+  userId: PropTypes.number,
   voteAverage: PropTypes.number,
   poster: PropTypes.string,
   overview: PropTypes.string,

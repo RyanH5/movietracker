@@ -10,7 +10,7 @@ export class CardContainer extends Component {
   }
 
   updateFaveAttributeOnLoad = () => {
-    const updatedMovies = this.props.movies.reduce((acc, movie, index) => {
+    const updatedMovies = this.props.movies.reduce((acc, movie) => {
       this.props.favorites.forEach((fave) => {
         if (fave.id === movie.id) {
           movie = { ...movie, isFave: true };

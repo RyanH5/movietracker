@@ -33,10 +33,10 @@ const userReducer = (state = { loginStatus: false }, action) => {
 
     case 'USER_SIGNUP':
       return {...state, 
-        id:action.user.id, 
-        name:action.user.name, 
-        favorites:action.user.favorites, 
-        loginStatus:action.user.loginStatus};
+        id: action.user.id, 
+        name: action.user.name, 
+        favorites: action.user.favorites, 
+        loginStatus: action.user.loginStatus};
 
     default:
       return state;

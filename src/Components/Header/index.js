@@ -3,7 +3,7 @@ import { NavLink, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { userLogout } from '../../Actions';
-import './styles.css'
+import './styles.css';
 
 const Header = (props) => {
   return (
@@ -58,7 +58,8 @@ export const mapDispatchToProps = (dispatch) => ({
 
 Header.propTypes = {
   loginStatus: PropTypes.bool,
-  userLogout: PropTypes.func.isRequired
+  userLogout: PropTypes.func.isRequired,
+  user: PropTypes.object
 };
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Header));

@@ -1,7 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import Login from '../../Containers/Login';
-import Signup from '../../Containers/Signup'
+import Signup from '../../Containers/Signup';
 import './styles.css';
 import { withRouter } from 'react-router';
 
@@ -16,6 +17,10 @@ const FormHolder = (props) => {
       <Signup />
     </div>
   );
+};
+
+FormHolder.propTypes = {
+  history: PropTypes.func
 };
 
 export default withRouter(FormHolder);

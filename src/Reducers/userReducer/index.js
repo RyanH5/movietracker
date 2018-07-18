@@ -14,7 +14,8 @@ const userReducer = (state = { loginStatus: false }, action) => {
       };
     case 'ADD_FAVORITE':
       return {
-        ...state, favorites:[...state.favorites, {...action.favorite, isFave: true}]
+        ...state, 
+        favorites:[...state.favorites, {...action.favorite, isFave: true}]
       };
     case 'REMOVE_FROM_FAVORITES':
       return {...state, favorites: state.favorites.filter((fave)=>{
@@ -31,7 +32,11 @@ const userReducer = (state = { loginStatus: false }, action) => {
       return {...state, id: '', name: '', favorites: [], loginStatus: false};
 
     case 'USER_SIGNUP':
-      return {...state, id:action.user.id, name:action.user.name, favorites:action.user.favorites, loginStatus:action.user.loginStatus};
+      return {...state, 
+        id:action.user.id, 
+        name:action.user.name, 
+        favorites:action.user.favorites, 
+        loginStatus:action.user.loginStatus};
 
     default:
       return state;

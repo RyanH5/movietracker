@@ -9,7 +9,7 @@ import Main from '../../Components/Main';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-class App extends Component {
+export class App extends Component {
 
   async componentDidMount() {
     const uncleanedMovies = await fetchSomeMovies();

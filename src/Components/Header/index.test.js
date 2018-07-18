@@ -1,7 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import {Header} from './index';
-import { mapStateToProps, mapDispatchToProps } from '../../Components/Header';
+import { Header, mapStateToProps, mapDispatchToProps } from './';
 import { userLogout } from '../../Actions';
 
 

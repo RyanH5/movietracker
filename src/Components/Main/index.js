@@ -6,7 +6,7 @@ import FormHolder from '../FormHolder';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-const Main = (props) => {
+export const Main = (props) => {
   return (
     <Switch>
       <Route

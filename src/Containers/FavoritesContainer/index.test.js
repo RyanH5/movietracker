@@ -1,7 +1,6 @@
-import {FavoritesContainer} from './index';
+import {FavoritesContainer, mapStateToProps} from './index';
 import { shallow } from 'enzyme';
 import React from 'react';
-import { mapStateToProps } from '../FavoritesContainer';
 
 describe('FavoritesContainer', () => {
   it.skip('should match snapshot', () => {

@@ -1,7 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Main from './index';
-import { mapStateToProps } from '../Main';
+import { Main, mapStateToProps } from './';
 
 describe('Main', () => {
   it('should match the snapshot', () => {

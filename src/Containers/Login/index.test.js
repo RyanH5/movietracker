@@ -1,6 +1,7 @@
-import {Login} from './index';
+import { Login, mapStateToProps, mapDispatchToProps } from './index';
 import { shallow, mount } from 'enzyme';
 import React from 'react';
+
 
 describe('Login', () => {
   it('should match snapshot', () => {

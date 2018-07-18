@@ -12,7 +12,7 @@ const MovieCard = (props) => {
   
   
   const userId = props.userId;
-  const movie = { id, userId, title, poster, releaseDate, voteAverage, overview };
+  const movie = { id, userId, title, poster, releaseDate, voteAverage, popularity, overview };
   const pathAddition = 'favorites/new';
   
   const renderImage = () => {

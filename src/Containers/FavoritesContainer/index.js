@@ -22,14 +22,13 @@ export class FavoritesContainer extends Component {
         <NavLink
           to="/"
           className="nav logout">
-          Back to Movies.
-        </NavLink>;
+          Back to Movies
+        </NavLink>
       </div>;
     }
   }
 
   render() {
-    // console.log(this.props.favorites);
 
     return (
       <div className="favorites-container">{this.favoritesDisplay()}</div>

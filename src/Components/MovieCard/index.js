@@ -41,7 +41,6 @@ const MovieCard = (props) => {
   }
   
   const handleFavorite = async (id) => {
-    console.log(props);
     const pathDeletion = `${userId}/favorites/${id}`;
     if (props.isLoggedIn) {
       if (isDuplicate(id)){

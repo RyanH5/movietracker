@@ -9,26 +9,85 @@ export class CardContainer extends Component {
     super(props);
   }
 
+  // updateFaveAttributeOnLoad = ()=>{
+    
+  //   const updatedMovies = this.props.movies.reduce((acc, movie) => {
+
+  //     const inner = this.props.favorites.reduce((accInner, fave) => {
+  //       if (movie.id === fave.id) {
+  //         accInner.push({ ...movie, isFave: true });
+  //       } else {
+  //         accInner.push({ ...movie, isFave: false });
+  //       }
+  //       return [...accInner];
+  //     }, []);
+
+  //     return [...acc, ...inner];
+  //   }, []);
+
+  //   return this.makeCards(updatedMovies);
+  // }
+
+  // makeCards = (updatedMovies)=>{
+  //   console.log(updatedMovies);
+    
+  //   const cards = updatedMovies.map((movie, index) =>{
+  //     return <MovieCard {...movie} key={index} />;
+  //   });
+  //   return cards;
+  // }
+  updateFaveAttributeOnLoad = () => {
+    const updatedMovies = this.props.movies.reduce((acc, movie, index) => {
+      this.props.favorites.forEach((fave) => {
+        if (fave.id === movie.id) {
+          movie = { ...movie, isFave: true }
+        }
+      })
+
+      acc = [...acc, movie]
+      return acc
+    }, [])
+    return this.makeCards(updatedMovies)
+  }
+
+  makeCards = (updatedMovies) => {
+    const cards = updatedMovies.map((movie, index) => { 
+      return <MovieCard {...movie} key={index} />;
+    });
+    return cards;
+  }
+
   cardsDisplay = () => {
     const cards = this.props.movies.map((movie, index) => {
       return <MovieCard  {...movie} key={index} />;
     });
     return cards;
   }
+  //<div className="card-container">{this.cardsDisplay()}</div>
 
+  
   render () {
     return (
-      <div className="card-container">{this.cardsDisplay()}</div>
+      <div>
+        {!this.props.favorites ?  
+          <div className="card-container">{this.cardsDisplay()}</div>
+          :
+          <div className="card-container">{this.updateFaveAttributeOnLoad()}</div> 
+        }
+      </div>
     );
   }
 }
 
 CardContainer.propTypes = {
-  movies: PropTypes.array.isRequired
+  movies: PropTypes.array.isRequired,
+  favorites: PropTypes.array.isRequired
 };
 
 export const mapStateToProps = (state) => ({
-  movies: state.moviesData
+  movies: state.moviesData,
+  favorites: state.user.favorites,
+  loginStatus: state.user.loginStatus
 });
 
 export default connect(mapStateToProps)(CardContainer);

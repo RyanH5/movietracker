@@ -18,5 +18,47 @@ describe('userReducer', () => {
     expect(result).toEqual(expected);
   });
 
-  it('should ')
+  it('should set loginStatus to false', () => {
+    const initial = {loginStatus: false};
+    const expected = {loginStatus: false};
+    const result = userReducer(initial, actions.userIsFalse(expected));
+
+    expect(result).toEqual(expected);
+  });
+
+  it('should add a favorite to the store', () => {
+    const initial = [{title: 'saw', id: 3}];
+    const newFav = {title: 'movie', id: 4};
+    const expected = [{
+      title: 'saw',
+      id: 3,
+      isFave: true
+    }, {
+      title: 'movie',
+      id: 4,
+      isFave: true
+    }
+    ];
+    const result = userReducer(initial, actions.addFavorite(newFav));
+
+    expect(result).toEqual(expected);
+  });
+
+  it('should remove movie from favorites', () => {
+    const expected = [{title: 'saw', id: 3}];
+    const removeFav = {title: 'movie', id: 4};
+    const initial = [{
+      title: 'saw',
+      id: 3,
+      isFave: true
+    }, {
+      title: 'movie',
+      id: 4,
+      isFave: true
+    }
+    ];
+    const result = userReducer(initial, actions.removeFromFavorites(removeFav));
+
+    expect(result).toEqual(expected);
+  });
 });

@@ -18,6 +18,6 @@ export const movieCleaner = (moviesData) => {
       popularity,
       backdrop,
       releaseDate
-    })
-  })
-}
+    });
+  });
+};

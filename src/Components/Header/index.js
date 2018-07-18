@@ -6,7 +6,6 @@ import { userLogout } from '../../Actions';
 import './styles.css'
 
 const Header = (props) => {
-  
   return (
     <div className="header-section">
       <h1 className="App-title">Movie Tracker</h1>
@@ -54,7 +53,6 @@ export const mapStateToProps = (state) => ({
 });
 
 export const mapDispatchToProps = (dispatch) => ({
-  
   userLogout: (user) => dispatch(userLogout(user))
 });
 

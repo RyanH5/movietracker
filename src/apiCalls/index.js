@@ -1,19 +1,19 @@
 import { apiKey } from '../apiKey';
 
-export const fetchSomeMovies = async ()=>{
+export const fetchSomeMovies = async () => {
   const url = `  https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_cast=887`;
-  
+
   const response = await fetch(url);
   const moviesData = await response.json();
-  return moviesData; 
+  return moviesData;
 };
 
-export const postFavorite = async (pathAddition, favorite, user) =>{
+export const postFavorite = async (pathAddition, favorite, user) => {
   try {
     const url = `http://localhost:3000/api/users/${pathAddition}`;
     const options = {
       method: 'POST',
-      body: JSON.stringify({ 
+      body: JSON.stringify({
         movie_id: favorite.id,
         user_id: user.id,
         title: favorite.title,
@@ -35,16 +35,16 @@ export const postFavorite = async (pathAddition, favorite, user) =>{
   }
 };
 
-export const loginUser = async ({ email, password, pathAddition, name}) => {
+export const loginUser = async ({ email, password, pathAddition, name }) => {
   try {
     const url = `http://localhost:3000/api/users/${pathAddition}`;
     const options = {
       method: 'POST',
-      body: JSON.stringify({email, password, name}),
-      headers: {'Content-Type': 'application/json'}
+      body: JSON.stringify({ email, password, name }),
+      headers: { 'Content-Type': 'application/json' }
     };
     const response = await fetch(url, options);
-    if (response.status !== 200){
+    if (response.status !== 200) {
       throw Error(response.status);
     }
     const userData = await response.json();

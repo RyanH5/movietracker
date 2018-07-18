@@ -8,50 +8,59 @@ import { postFavorite, removeFaveFromDatabase } from '../../apiCalls';
 import { withRouter } from 'react-router';
 
 const MovieCard = (props) => {
-  const { title, voteAverage, poster, overview, popularity, id, releaseDate, isFave } = props;
-  
-  
+  const { 
+    title, 
+    voteAverage, 
+    poster, 
+    overview, 
+    popularity, 
+    id, 
+    releaseDate, 
+    isFave 
+  } = props;
   const userId = props.userId;
-  const movie = { id, userId, title, poster, releaseDate, voteAverage, popularity, overview };
+  const movie = { 
+    id, 
+    userId, 
+    title, 
+    poster, 
+    releaseDate, 
+    voteAverage, 
+    popularity, 
+    overview }; 
   const pathAddition = 'favorites/new';
-  
+
   const renderImage = () => {
     return poster ? <img
       src={`https://image.tmdb.org/t/p/w200${poster}`}
       alt="" /> :
-
       <img src={posterPlaceholder} />;
   };
-  
+
   const isDuplicate = (id) => {
     const nonDuplicates = props.favorites.filter((fav) => {
       return fav.id !== id;
     });
-    
     return props.favorites.length !== nonDuplicates.length;
   };
 
-  const toggleFave = (id)=>{
-    props.favorites.forEach((fave)=>{
-      if (fave.id === id) {
-        fave.isFave = !fave.isFave;
-      }
-      
-    })
-  }
-  
+  // const toggleFave = (id) => {
+  //   props.favorites.forEach((fave) => {
+  //     if (fave.id === id) {
+  //       fave.isFave = !fave.isFave;
+  //     }
+
+  //   });
+  // };
   const handleFavorite = async (id) => {
     const pathDeletion = `${userId}/favorites/${id}`;
     if (props.isLoggedIn) {
-      if (isDuplicate(id)){
-        
+      if (isDuplicate(id)) {
         await removeFaveFromDatabase(pathDeletion); //check that response is successful before adding to the store
         props.removeFromFavorites(id);
       } else {
-        
         await postFavorite(pathAddition, movie, props.state.user);
         props.addFavorite(movie);
-        
       }
     } else {
       props.history.push('/login');
@@ -59,22 +68,23 @@ const MovieCard = (props) => {
   };
 
   return (
-    <div className="movie-card"> 
+    <div className="movie-card">
       <button
         className="fave-button"
         onClick={() => handleFavorite(id)}
         style={{
           color: isFave ? 'indianred' : '#98c5da'
-        }
-        }
-      >
-    FAVORITE
+        }}>
+        FAVORITE
       </button>
       <h1 className="card-title">{title}</h1>
-      
       {renderImage()}
-      <h4><span>Vote average:<span>&nbsp;&nbsp;&nbsp;</span></span>{voteAverage}</h4>
-      <h4><span>Popularity:<span>&nbsp;&nbsp;&nbsp;</span></span>{popularity}</h4>
+      <h4>
+        <span>Vote average:<span>&nbsp;&nbsp;&nbsp;</span></span>{voteAverage}
+      </h4>
+      <h4>
+        <span>Popularity:<span>&nbsp;&nbsp;&nbsp;</span></span>{popularity}
+      </h4>
       {overview && <h5 className="overview">Summary:   {overview}</h5>}
     </div>
   );
@@ -102,8 +112,7 @@ export const mapStateToProps = (state) => ({
   state,
   isLoggedIn: state.user.loginStatus,
   userId: state.user.id,
-  favorites: state.user.favorites,
-
+  favorites: state.user.favorites
 });
 
 export const mapDispatchToProps = (dispatch) => ({

@@ -18,17 +18,17 @@ export const removeFromFavorites = (favoriteId) => ({
   favoriteId
 });
 
-export const toggleUserLogin = (user) =>({
+export const toggleUserLogin = (user) => ({
   type: 'TOGGLE_USER_LOGIN',
   user
 });
 
-export const userIsFalse = (user) =>({
+export const userIsFalse = (user) => ({
   type: 'USER_IS_FALSE',
   user
 });
 
-export const userLogout = (user)=>({
+export const userLogout = (user) => ({
   type: 'USER_LOGOUT',
   user
 });

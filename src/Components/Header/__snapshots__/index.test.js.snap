@@ -4,7 +4,9 @@ exports[`Header should match the snapshot 1`] = `
 ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <withRouter(Connect(Header)) />,
+  Symbol(enzyme.__unrendered__): <Unknown
+    userLogout={[Function]}
+/>,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "getNode": [Function],
@@ -15,25 +17,265 @@ ShallowWrapper {
   Symbol(enzyme.__node__): Object {
     "instance": null,
     "key": undefined,
-    "nodeType": "class",
+    "nodeType": "host",
     "props": Object {
-      "children": [Function],
+      "children": Array [
+        <h1
+          className="App-title"
+>
+          Movie Tracker
+</h1>,
+        <div
+          className="logged-out-nav"
+>
+          <NavLink
+                    activeClassName="active"
+                    aria-current="page"
+                    className="nav home"
+                    to="/"
+          >
+                    Home
+          </NavLink>
+          <NavLink
+                    activeClassName="active"
+                    aria-current="page"
+                    className="nav"
+                    to="/login"
+          >
+                    Login
+                    <br />
+                    SignUp
+          </NavLink>
+</div>,
+      ],
+      "className": "header-section",
     },
     "ref": null,
-    "rendered": [Function],
-    "type": [Function],
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": "Movie Tracker",
+          "className": "App-title",
+        },
+        "ref": null,
+        "rendered": "Movie Tracker",
+        "type": "h1",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            <NavLink
+              activeClassName="active"
+              aria-current="page"
+              className="nav home"
+              to="/"
+>
+              Home
+</NavLink>,
+            <NavLink
+              activeClassName="active"
+              aria-current="page"
+              className="nav"
+              to="/login"
+>
+              Login
+              <br />
+              SignUp
+</NavLink>,
+          ],
+          "className": "logged-out-nav",
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "function",
+            "props": Object {
+              "activeClassName": "active",
+              "aria-current": "page",
+              "children": "Home",
+              "className": "nav home",
+              "to": "/",
+            },
+            "ref": null,
+            "rendered": "Home",
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "function",
+            "props": Object {
+              "activeClassName": "active",
+              "aria-current": "page",
+              "children": Array [
+                "Login",
+                <br />,
+                "SignUp",
+              ],
+              "className": "nav",
+              "to": "/login",
+            },
+            "ref": null,
+            "rendered": Array [
+              "Login",
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {},
+                "ref": null,
+                "rendered": null,
+                "type": "br",
+              },
+              "SignUp",
+            ],
+            "type": [Function],
+          },
+        ],
+        "type": "div",
+      },
+    ],
+    "type": "div",
   },
   Symbol(enzyme.__nodes__): Array [
     Object {
       "instance": null,
       "key": undefined,
-      "nodeType": "class",
+      "nodeType": "host",
       "props": Object {
-        "children": [Function],
+        "children": Array [
+          <h1
+            className="App-title"
+>
+            Movie Tracker
+</h1>,
+          <div
+            className="logged-out-nav"
+>
+            <NavLink
+                        activeClassName="active"
+                        aria-current="page"
+                        className="nav home"
+                        to="/"
+            >
+                        Home
+            </NavLink>
+            <NavLink
+                        activeClassName="active"
+                        aria-current="page"
+                        className="nav"
+                        to="/login"
+            >
+                        Login
+                        <br />
+                        SignUp
+            </NavLink>
+</div>,
+        ],
+        "className": "header-section",
       },
       "ref": null,
-      "rendered": [Function],
-      "type": [Function],
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": "Movie Tracker",
+            "className": "App-title",
+          },
+          "ref": null,
+          "rendered": "Movie Tracker",
+          "type": "h1",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <NavLink
+                activeClassName="active"
+                aria-current="page"
+                className="nav home"
+                to="/"
+>
+                Home
+</NavLink>,
+              <NavLink
+                activeClassName="active"
+                aria-current="page"
+                className="nav"
+                to="/login"
+>
+                Login
+                <br />
+                SignUp
+</NavLink>,
+            ],
+            "className": "logged-out-nav",
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "function",
+              "props": Object {
+                "activeClassName": "active",
+                "aria-current": "page",
+                "children": "Home",
+                "className": "nav home",
+                "to": "/",
+              },
+              "ref": null,
+              "rendered": "Home",
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "function",
+              "props": Object {
+                "activeClassName": "active",
+                "aria-current": "page",
+                "children": Array [
+                  "Login",
+                  <br />,
+                  "SignUp",
+                ],
+                "className": "nav",
+                "to": "/login",
+              },
+              "ref": null,
+              "rendered": Array [
+                "Login",
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {},
+                  "ref": null,
+                  "rendered": null,
+                  "type": "br",
+                },
+                "SignUp",
+              ],
+              "type": [Function],
+            },
+          ],
+          "type": "div",
+        },
+      ],
+      "type": "div",
     },
   ],
   Symbol(enzyme.__options__): Object {

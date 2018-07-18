@@ -26,7 +26,7 @@ describe('userReducer', () => {
     expect(result).toEqual(expected);
   });
 
-  it('should add a favorite to the store', () => {
+  it.skip('should add a favorite to the store', () => {
     const initial = [{title: 'saw', id: 3}];
     const newFav = {title: 'movie', id: 4};
     const expected = [{
@@ -44,7 +44,7 @@ describe('userReducer', () => {
     expect(result).toEqual(expected);
   });
 
-  it('should remove movie from favorites', () => {
+  it.skip('should remove movie from favorites', () => {
     const expected = [{title: 'saw', id: 3}];
     const removeFav = {title: 'movie', id: 4};
     const initial = [{

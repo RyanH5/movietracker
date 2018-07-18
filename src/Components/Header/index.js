@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { userLogout } from '../../Actions';
 import './styles.css';
 
-const Header = (props) => {
+export const Header = (props) => {
   return (
     <div className="header-section">
       <h1 className="App-title">Movie Tracker</h1>

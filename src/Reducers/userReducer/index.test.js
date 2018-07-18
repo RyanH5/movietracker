@@ -26,10 +26,10 @@ describe('userReducer', () => {
     expect(result).toEqual(expected);
   });
 
-  it.skip('should add a favorite to the store', () => {
-    const initial = [{title: 'saw', id: 3}];
-    const newFav = {title: 'movie', id: 4};
-    const expected = [{
+  it('should add a favorite to the store', () => {
+    const initial = {favorites:[{title: 'saw', id: 3, isFave: true}]};
+    const newFav = {title: 'movie', id: 4, isFave: false};
+    const expected = {favorites:[{
       title: 'saw',
       id: 3,
       isFave: true
@@ -38,16 +38,43 @@ describe('userReducer', () => {
       id: 4,
       isFave: true
     }
-    ];
+    ]};
     const result = userReducer(initial, actions.addFavorite(newFav));
 
     expect(result).toEqual(expected);
   });
 
-  it.skip('should remove movie from favorites', () => {
-    const expected = [{title: 'saw', id: 3}];
-    const removeFav = {title: 'movie', id: 4};
-    const initial = [{
+  it('should remove movie from favorites', () => {
+    const expected = {favorites: [{title: 'saw', id: 3, isFave: true}]};
+    const removeFav = 4;
+    const initial = {favorites:[{
+      title: 'saw',
+      id: 3,
+      isFave: true
+    }, {
+      title: 'movie',
+      id: 4,
+      isFave: true
+    }
+    ]};
+    const result = userReducer(initial, actions.removeFromFavorites(removeFav));
+
+    expect(result).toEqual(expected);
+  });
+
+  it('should add all favorites ', () => {
+    const expected = {favorites:[{
+      title: 'saw',
+      id: 3,
+      isFave: true
+    }, {
+      title: 'movie',
+      id: 4,
+      isFave: true
+    }
+    ]};
+    const  initial = [];
+    const allFavs = [{
       title: 'saw',
       id: 3,
       isFave: true
@@ -57,8 +84,24 @@ describe('userReducer', () => {
       isFave: true
     }
     ];
-    const result = userReducer(initial, actions.removeFromFavorites(removeFav));
+    const result = userReducer(initial, actions.addAllFavs(allFavs));
 
     expect(result).toEqual(expected);
+  });
+
+  it('should log user out', () => {
+    const user = {id: 2, name: 'Jill', favorites: [], loginStatus: true};
+    const loggedOutUser = {id: '', name: '', favorites: [], loginStatus: false};
+    const result = userReducer(user, actions.userLogout(user));
+
+    expect(result).toEqual(loggedOutUser);
+  });
+
+  it('should sign user up', () => {
+    const newUser = {id: 2, name: 'Jill', favorites: [], loginStatus: true};
+    const preUser = {id: '', name: '', favorites: [], loginStatus: false};
+    const result = userReducer(preUser, actions.userSignup(newUser));
+
+    expect(result).toEqual(newUser);
   });
 });

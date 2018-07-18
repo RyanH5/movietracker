@@ -61,4 +61,31 @@ describe('userReducer', () => {
 
     expect(result).toEqual(expected);
   });
+
+  it('should add all favorites ', () => {
+    const expected = {favorites:[{
+      title: 'saw',
+      id: 3,
+      isFave: true
+    }, {
+      title: 'movie',
+      id: 4,
+      isFave: true
+    }
+    ]};
+    const  initial = [];
+    const allFavs = [{
+      title: 'saw',
+      id: 3,
+      isFave: true
+    }, {
+      title: 'movie',
+      id: 4,
+      isFave: true
+    }
+    ];
+    const result = userReducer(initial, actions.addAllFavs(allFavs));
+
+    expect(result).toEqual(expected);
+  });
 });

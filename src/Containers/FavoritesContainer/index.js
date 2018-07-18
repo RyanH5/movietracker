@@ -6,9 +6,6 @@ import PropTypes from 'prop-types';
 import {NavLink, withRouter} from 'react-router-dom';
 
 export class FavoritesContainer extends Component {
-  constructor(props) {
-    super(props);
-  }
 
   favoritesDisplay = () => {
     if (this.props.favorites.length) {

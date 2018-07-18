@@ -1,8 +1,8 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import {Header} from './index';
+import { Header, mapStateToProps, mapDispatchToProps } from './';
+import { userLogout } from '../../Actions';
 
-// jest.mock('./index.js');
 
 describe('Header', () => {
   let wrapper;
@@ -24,5 +24,39 @@ describe('Header', () => {
     wrapper.find('.logout').last().simulate('click');
 
     expect(mockUserLogout).toHaveBeenCalledWith(mockUser);
+  });
+
+  describe('mapStateToProps', () => {
+    it('should return a props object with loginStatus key', () => {
+      const mockState = {
+        user: {
+          loginStatus: true,
+          id: 3,
+          name: 'billy'
+        }
+      };
+      const expected = {
+        loginStatus: true,
+        user: {
+          loginStatus: true,
+          id: 3,
+          name: 'billy'
+        }
+      };
+      const mappedProps = mapStateToProps(mockState);
+      
+      expect(mappedProps).toEqual(expected);
+    });
+  });
+
+  describe('mapDispatchToProps', () => {
+    it('should call dispatch when using a fn from MDTP', () => {
+      const mockDispatch = jest.fn();
+      const actionToDispatch = userLogout({user: {id: 3, loginStatus: false}})
+      const mappedToProps = mapDispatchToProps(mockDispatch);
+      mappedToProps.userLogout({user: {id: 3, loginStatus: false}})
+      
+      expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
+    });
   });
 });

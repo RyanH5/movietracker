@@ -7,7 +7,7 @@ import { addFavorite, removeFromFavorites } from '../../Actions';
 import { postFavorite, removeFaveFromDatabase } from '../../apiCalls';
 import { withRouter } from 'react-router';
 
-const MovieCard = (props) => {
+export const MovieCard = (props) => {
   const { 
     title, 
     voteAverage, 
@@ -51,7 +51,7 @@ const MovieCard = (props) => {
         await removeFaveFromDatabase(pathDeletion); 
         props.removeFromFavorites(id);
       } else {
-        await postFavorite(pathAddition, movie, props.state.user);
+        await postFavorite(pathAddition, movie, props.user);
         props.addFavorite(movie);
       }
     } else {
@@ -93,19 +93,19 @@ MovieCard.propTypes = {
   backdrop: PropTypes.string,
   releaseDate: PropTypes.string,
   addFavorite: PropTypes.func,
-  state: PropTypes.object,
   isLoggedIn: PropTypes.bool,
   removeFromFavorites: PropTypes.func,
   favorites: PropTypes.array,
   history: PropTypes.object,
-  isFave: PropTypes.bool
+  isFave: PropTypes.bool,
+  user: PropTypes.object
 };
 
 export const mapStateToProps = (state) => ({
-  state,
   isLoggedIn: state.user.loginStatus,
   userId: state.user.id,
-  favorites: state.user.favorites
+  favorites: state.user.favorites,
+  user: state.user
 });
 
 export const mapDispatchToProps = (dispatch) => ({

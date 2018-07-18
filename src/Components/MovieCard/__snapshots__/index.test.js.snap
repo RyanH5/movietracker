@@ -4,7 +4,7 @@ exports[`MovieCard should match snapshot 1`] = `
 ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <withRouter(Connect(MovieCard)) />,
+  Symbol(enzyme.__unrendered__): <Unknown />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "getNode": [Function],
@@ -15,25 +15,379 @@ ShallowWrapper {
   Symbol(enzyme.__node__): Object {
     "instance": null,
     "key": undefined,
-    "nodeType": "class",
+    "nodeType": "host",
     "props": Object {
-      "children": [Function],
+      "children": Array [
+        <button
+          className="fave-button"
+          onClick={[Function]}
+          style={
+                    Object {
+                              "color": "#98c5da",
+                            }
+          }
+>
+          FAVORITE
+</button>,
+        <h1
+          className="card-title"
+/>,
+        <img
+          src="posterPlaceholder.jpg"
+/>,
+        <h4>
+          <span>
+                    Vote average:
+                    <span>
+                                 
+                    </span>
+          </span>
+</h4>,
+        <h4>
+          <span>
+                    Popularity:
+                    <span>
+                                 
+                    </span>
+          </span>
+</h4>,
+        undefined,
+      ],
+      "className": "movie-card",
     },
     "ref": null,
-    "rendered": [Function],
-    "type": [Function],
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": "FAVORITE",
+          "className": "fave-button",
+          "onClick": [Function],
+          "style": Object {
+            "color": "#98c5da",
+          },
+        },
+        "ref": null,
+        "rendered": "FAVORITE",
+        "type": "button",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": undefined,
+          "className": "card-title",
+        },
+        "ref": null,
+        "rendered": null,
+        "type": "h1",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "src": "posterPlaceholder.jpg",
+        },
+        "ref": null,
+        "rendered": null,
+        "type": "img",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            <span>
+              Vote average:
+              <span>
+                               
+              </span>
+</span>,
+            undefined,
+          ],
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": Array [
+                "Vote average:",
+                <span>
+                     
+</span>,
+              ],
+            },
+            "ref": null,
+            "rendered": Array [
+              "Vote average:",
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": "   ",
+                },
+                "ref": null,
+                "rendered": "   ",
+                "type": "span",
+              },
+            ],
+            "type": "span",
+          },
+          undefined,
+        ],
+        "type": "h4",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            <span>
+              Popularity:
+              <span>
+                               
+              </span>
+</span>,
+            undefined,
+          ],
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": Array [
+                "Popularity:",
+                <span>
+                     
+</span>,
+              ],
+            },
+            "ref": null,
+            "rendered": Array [
+              "Popularity:",
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": "   ",
+                },
+                "ref": null,
+                "rendered": "   ",
+                "type": "span",
+              },
+            ],
+            "type": "span",
+          },
+          undefined,
+        ],
+        "type": "h4",
+      },
+      undefined,
+    ],
+    "type": "div",
   },
   Symbol(enzyme.__nodes__): Array [
     Object {
       "instance": null,
       "key": undefined,
-      "nodeType": "class",
+      "nodeType": "host",
       "props": Object {
-        "children": [Function],
+        "children": Array [
+          <button
+            className="fave-button"
+            onClick={[Function]}
+            style={
+                        Object {
+                                    "color": "#98c5da",
+                                  }
+            }
+>
+            FAVORITE
+</button>,
+          <h1
+            className="card-title"
+/>,
+          <img
+            src="posterPlaceholder.jpg"
+/>,
+          <h4>
+            <span>
+                        Vote average:
+                        <span>
+                                       
+                        </span>
+            </span>
+</h4>,
+          <h4>
+            <span>
+                        Popularity:
+                        <span>
+                                       
+                        </span>
+            </span>
+</h4>,
+          undefined,
+        ],
+        "className": "movie-card",
       },
       "ref": null,
-      "rendered": [Function],
-      "type": [Function],
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": "FAVORITE",
+            "className": "fave-button",
+            "onClick": [Function],
+            "style": Object {
+              "color": "#98c5da",
+            },
+          },
+          "ref": null,
+          "rendered": "FAVORITE",
+          "type": "button",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": undefined,
+            "className": "card-title",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": "h1",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "src": "posterPlaceholder.jpg",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": "img",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <span>
+                Vote average:
+                <span>
+                                   
+                </span>
+</span>,
+              undefined,
+            ],
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  "Vote average:",
+                  <span>
+                       
+</span>,
+                ],
+              },
+              "ref": null,
+              "rendered": Array [
+                "Vote average:",
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": "   ",
+                  },
+                  "ref": null,
+                  "rendered": "   ",
+                  "type": "span",
+                },
+              ],
+              "type": "span",
+            },
+            undefined,
+          ],
+          "type": "h4",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <span>
+                Popularity:
+                <span>
+                                   
+                </span>
+</span>,
+              undefined,
+            ],
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  "Popularity:",
+                  <span>
+                       
+</span>,
+                ],
+              },
+              "ref": null,
+              "rendered": Array [
+                "Popularity:",
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": "   ",
+                  },
+                  "ref": null,
+                  "rendered": "   ",
+                  "type": "span",
+                },
+              ],
+              "type": "span",
+            },
+            undefined,
+          ],
+          "type": "h4",
+        },
+        undefined,
+      ],
+      "type": "div",
     },
   ],
   Symbol(enzyme.__options__): Object {

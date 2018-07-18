@@ -4,9 +4,10 @@ import { fetchSomeMovies,
   loginUser, 
   fetchFavorites, 
   removeFaveFromDatabase 
-} from './';
+} from '../apiCalls/index';
 import { mockMovieData } from './mockMovieData';
 import { apiKey } from '../apiKey';
+
 
 describe('fetchSomeMovies', () => {
  
@@ -68,5 +69,46 @@ describe('postFavorite', () => {
     await postFavorite(pathAddition, mockMovie, mockUser);
 
     expect(window.fetch).toHaveBeenCalledWith(url, mockOptionsObj);
+  });
+});
+
+
+describe('removeFaveFromDatabase', () => {
+  let pathDeletion;
+  let mockUrl;
+  let mockOptions;
+  let userId;
+
+  beforeEach(() => {
+    userId = 1;
+    pathDeletion = `${userId}/favorites/1`;
+    mockUrl = `http://localhost:3000/api/users/${pathDeletion}`;
+    mockOptions = {
+      method: 'DELETE',
+      headers: { 'Content-Type': 'application/json' }
+    };
+    window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
+      status: 200,
+      json: () => Promise.resolve({
+        status: 'success',
+        message: '1 row was deleted.'
+      })
+    }));
+
+    it('should call fetch with correct params', async () => {
+      await removeFaveFromDatabase(pathDeletion);
+
+      expect(window.fetch).toHaveBeenCalledWith(mockUrl, mockOptions);
+    });
+
+    it('should return the correct data', async () => {
+      const expected = {
+        status: 'success',
+        message: '1 row was deleted.'
+      };
+      const result = await removeFaveFromDatabase(pathDeletion);
+
+      expect(result).toEqual(expected);
+    });
   });
 });

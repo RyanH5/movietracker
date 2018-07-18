@@ -5,9 +5,6 @@ import './styles.css';
 import PropTypes from 'prop-types';
 
 export class CardContainer extends Component {
-  constructor(props) {
-    super(props);
-  }
 
   updateFaveAttributeOnLoad = () => {
     const updatedMovies = this.props.movies.reduce((acc, movie) => {

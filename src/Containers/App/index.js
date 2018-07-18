@@ -10,11 +10,6 @@ import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 class App extends Component {
-  constructor() {
-    super();
-    this.state = {
-    };
-  }
 
   async componentDidMount() {
     const uncleanedMovies = await fetchSomeMovies();

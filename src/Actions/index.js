@@ -32,3 +32,8 @@ export const userLogout = (user) => ({
   type: 'USER_LOGOUT',
   user
 });
+
+export const userSignup = (user) =>({
+  type: 'USER_SIGNUP',
+  user
+});

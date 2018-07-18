@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { loginUser } from '../../apiCalls';
-import { toggleUserLogin, userIsFalse } from '../../Actions';
+import { userSignup, toggleUserLogin, userIsFalse } from '../../Actions';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import './styles.css';
@@ -26,13 +26,14 @@ export class Signup extends Component {
   handleSubmit = async (event)=>{
     event.preventDefault();
     this.setState({isLoading: true});
-    const user = await loginUser(this.state); 
+    let user = await loginUser(this.state); 
     if (!user){
       this.setState({hasErrored: true, isLoading: false});
       this.props.userIsFalse(user);
     } else {
       this.setState({ isLoading: false });
-      this.props.toggleUserLogin(user); 
+      user = { ...user, id: user.id, name: this.state.name, favorites: [], loginStatus: true }
+      this.props.userSignup(user); 
     }
   }
 
@@ -69,7 +70,7 @@ export class Signup extends Component {
           name="password"   
         />
         <button
-          className="sing-up"
+          className="sign-up"
         >Sign Up</button>
       </form>
     );
@@ -87,7 +88,8 @@ export const mapStateToProps = (state) => ({
 
 export const mapDispatchToProps = (dispatch)=>({
   toggleUserLogin: (user)=>dispatch(toggleUserLogin(user)),
-  userIsFalse: (user)=>dispatch(userIsFalse(user))
+  userIsFalse: (user)=>dispatch(userIsFalse(user)),
+  userSignup: (user)=>dispatch(userSignup(user))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Signup);

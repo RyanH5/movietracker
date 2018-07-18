@@ -38,9 +38,7 @@ const MovieCard = (props) => {
   };
 
   const isDuplicate = (id) => {
-    console.log('ID', id)
     const nonDuplicates = props.favorites.filter((fav) => {
-      console.log('fav', fav)
       return fav.id !== id;
     });
     return props.favorites.length !== nonDuplicates.length;

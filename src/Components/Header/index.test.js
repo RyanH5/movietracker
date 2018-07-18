@@ -6,6 +6,6 @@ describe('Header', () => {
   it('should match the snapshot', () => {
     let wrapper = shallow(<Header />);
 
-    expect(wrapper).toMatchSnapshot()
+    expect(wrapper).toMatchSnapshot();
   });
 });

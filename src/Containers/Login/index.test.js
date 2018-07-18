@@ -1,4 +1,4 @@
-import Login from './index';
+import {Login} from './index';
 import { shallow, mount } from 'enzyme';
 import React from 'react';
 
@@ -44,8 +44,5 @@ describe('Login', () => {
 
       expect(spy).toHaveBeenCalled();
     });
-
-
-
   });
 });

@@ -88,4 +88,20 @@ describe('userReducer', () => {
 
     expect(result).toEqual(expected);
   });
+
+  it('should log user out', () => {
+    const user = {id: 2, name: 'Jill', favorites: [], loginStatus: true};
+    const loggedOutUser = {id: '', name: '', favorites: [], loginStatus: false};
+    const result = userReducer(user, actions.userLogout(user));
+
+    expect(result).toEqual(loggedOutUser);
+  });
+
+  it('should sign user up', () => {
+    const newUser = {id: 2, name: 'Jill', favorites: [], loginStatus: true};
+    const preUser = {id: '', name: '', favorites: [], loginStatus: false};
+    const result = userReducer(preUser, actions.userSignup(newUser));
+
+    expect(result).toEqual(newUser);
+  });
 });

@@ -52,7 +52,7 @@ export class CardContainer extends Component {
 
 CardContainer.propTypes = {
   movies: PropTypes.array.isRequired,
-  favorites: PropTypes.array.isRequired
+  favorites: PropTypes.array
 };
 
 export const mapStateToProps = (state) => ({

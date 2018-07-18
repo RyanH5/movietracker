@@ -3,7 +3,7 @@ import { Route, withRouter, Redirect, Switch } from 'react-router-dom';
 import CardContainer from '../../Containers/CardContainer';
 import FavoritesContainer from '../../Containers/FavoritesContainer';
 import FormHolder from '../FormHolder';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 const Main = (props) => {
@@ -12,7 +12,7 @@ const Main = (props) => {
       <Route
         exact path="/"
         component={CardContainer}
-      /> 
+      />
       <Route
         exact path="/favorites"
         component={FavoritesContainer}
@@ -41,5 +41,3 @@ export const mapStateToProps = (state) => ({
 });
 
 export default withRouter(connect(mapStateToProps)(Main));
-
-

@@ -5,7 +5,7 @@ import Signup from '../../Containers/Signup'
 import './styles.css';
 import { withRouter } from 'react-router';
 
-const FormHolder = (props)=> {
+const FormHolder = (props) => {
 
   return (
     <div className="form-holder">

@@ -1,7 +1,9 @@
 const moviesData = (state = [], action) => {
-  switch(action.type) {
+  switch (action.type) {
     case 'ADD_MOVIES':
-      return [...state, ...action.movies];
+      return [...state, ...action.movies.map((movie)=>{
+        return {...movie, isFave: false};
+      })];
     default:
       return state;
   }

@@ -4,7 +4,6 @@ button {
   padding: 7px;
   background: #111580;
   border-radius: 7px;
-  color: #98c5da;
   margin-bottom: 20px;
 }
 
@@ -18,6 +17,11 @@ button {
   padding: 20px 10px 10px 10px;
 }
 
+span {
+  font-style: italic;
+  color: blue;
+}
+
 .mydiv {
   height: 30px;
   width: 100px;
@@ -27,20 +31,20 @@ button {
   margin: 15px auto;
 }
 
-@media screen and (max-width: 950px) { 
+@media screen and (max-width: 950px) {
   .movie-card {
     width: 30%;
   }
- }
+}
 
- @media screen and (max-width: 600px) { 
+@media screen and (max-width: 600px) {
   .movie-card {
     width: 40%;
   }
- }
+}
 
- @media screen and (max-width: 400px) { 
+@media screen and (max-width: 400px) {
   .movie-card {
     width: 85%;
   }
- }
+}

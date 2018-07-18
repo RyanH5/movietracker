@@ -2,13 +2,10 @@ import React from 'react';
 import { NavLink, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { toggleUserLogin } from '../../Actions';
+import { userLogout } from '../../Actions';
 import './styles.css'
 
-
-
 const Header = (props) => {
-  
   return (
     <div className="header-section">
       <h1 className="App-title">Movie Tracker</h1>
@@ -26,13 +23,12 @@ const Header = (props) => {
               Favorites
             </NavLink>
             <NavLink
-              onClick={() => props.toggleUserLogin(props.user)}
+              onClick={() => props.userLogout(props.user)}
               to="/"
               className="nav logout">
               Log Out
             </NavLink>
           </div>
-
           :
           <div className="logged-out-nav">
             <NavLink
@@ -46,7 +42,6 @@ const Header = (props) => {
               Login<br></br>SignUp
             </NavLink>
           </div>
-          
       }
     </div>
   );
@@ -58,11 +53,12 @@ export const mapStateToProps = (state) => ({
 });
 
 export const mapDispatchToProps = (dispatch) => ({
-  toggleUserLogin: (user) => dispatch(toggleUserLogin(user))
+  userLogout: (user) => dispatch(userLogout(user))
 });
 
 Header.propTypes = {
-  loginStatus: PropTypes.bool
+  loginStatus: PropTypes.bool,
+  userLogout: PropTypes.func.isRequired
 };
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Header));

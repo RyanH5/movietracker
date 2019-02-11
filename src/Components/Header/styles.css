@@ -1,27 +1,36 @@
 .header-section {
-  height: 20vh;
+  height: 12vh;
   font-size: 4vh;
   color: #fff;
   font-family: 'Courier New', Courier, monospace;
-  padding-top: 30px;
+  padding-top: 10px;
   width: 100%;
 }
 
 .nav {
   text-decoration: none;
   color: #fff;
-  margin: 15px;
+  margin: 5px;
+  font-size: 20px;
 }
 
 .logged-out-nav {
   position: absolute;
   display: flex;
   flex-direction: column;
-  top: 20px;
-  right: 20px;
+  top: 35px;
+  right: 15px;
 }
 
 .active {
   color: fff;
   border-bottom: 2px solid #fff;
+}
+
+@media screen and (max-width: 750px) {
+  .logged-out-nav {
+    flex-direction: row;
+    top: 65px;
+    right: 10px;
+  }
 }

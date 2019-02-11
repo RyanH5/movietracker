@@ -1,4 +1,5 @@
 export const movieCleaner = (moviesData) => {
+  console.log(moviesData)
   return moviesData.results.map(movie => {
     const title = movie.title;
     const id = movie.id;

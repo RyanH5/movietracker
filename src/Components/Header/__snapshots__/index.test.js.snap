@@ -43,7 +43,7 @@ ShallowWrapper {
                     to="/login"
           >
                     Login
-                    <br />
+                    
                     SignUp
           </NavLink>
 </div>,

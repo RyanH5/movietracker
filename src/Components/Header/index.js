@@ -39,7 +39,7 @@ export const Header = (props) => {
             <NavLink
               to="/login"
               className="nav">
-              Login<br></br>SignUp
+              Login
             </NavLink>
           </div>
       }

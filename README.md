@@ -1,4 +1,7 @@
-![Movie Tracker](/screen-shot.png)
+<img src="movies desktop.png"></img>
+<img src="movies tablet.png"></img>
+<img src="movies mobile.png"></img>
+
 
 # Movie Tracker
 

@@ -1,8 +1,3 @@
-<img src="Movies Desktop.png"></img>
-<img src="Movies Tablet.png"></img>
-<img src="Movies Mobile.png"></img>
-
-
 # Movie Tracker
 
 This app allows a user to select from a collection of movies from the MovieDB api.  .  The app includes signin/login functionality.  The user may also designate some files as favorites and the favorites are persisted in the backend, a Postgres database.
@@ -26,3 +21,14 @@ This project was bootstrapped with npm create-react-app.
 
 * **Ryan Harrington** - *Initial work* - (https://github.com/ryanh5)
 * **Theresa Marquis** - *Initial work* - (https://github.com/tmcjunkinmarquis)
+
+## DESKTOP
+<img src="Movies Desktop.png"></img>
+
+## TABLET
+<img src="Movies Tablet.png"></img>
+
+## MOBILE
+<img src="Movies Mobile.png"></img>
+
+

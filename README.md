@@ -1,6 +1,6 @@
-<img src="movies desktop.png"></img>
-<img src="movies tablet.png"></img>
-<img src="movies mobile.png"></img>
+<img src="Movies Desktop.png"></img>
+<img src="Movies Tablet.png"></img>
+<img src="Movies Mobile.png"></img>
 
 
 # Movie Tracker
